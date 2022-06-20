@@ -6,9 +6,7 @@ const Page: NextPage = () => {
     <div>
       <Meta />
 
-      <main>
-        <p>hello</p>
-      </main>
+      <p>hello</p>
 
       <footer></footer>
     </div>
