@@ -16,7 +16,7 @@ export const Header = styled.header`
 `
 
 export const Main = styled.main`
-  flex: 2;
+  flex: 4;
 `
 
 export const H1 = styled.h1`

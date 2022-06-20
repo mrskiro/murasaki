@@ -1,9 +1,13 @@
 import Head from "next/head"
 
-export const Meta = () => {
+type Props = {
+  title: string
+}
+
+export const Meta = (props: Props) => {
   return (
     <Head>
-      <title>🟣</title>
+      <title>{`${props.title} | 🟣`}</title>
       <link rel="icon" href="/favicon.ico" />
       {/* wip */}
     </Head>
