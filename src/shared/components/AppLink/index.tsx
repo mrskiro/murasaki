@@ -1,25 +1,15 @@
 import Link, { LinkProps } from "next/link"
-import { useRouter } from "next/router"
-import { PropsWithChildren, useEffect, useState } from "react"
+import { PropsWithChildren } from "react"
 import { A } from "./styled"
 
-export const AppLink = (props: PropsWithChildren<LinkProps>) => {
-  const router = useRouter()
+type Props = {
+  isActive?: boolean
+}
 
-  const [isActive, setIsActive] = useState(false)
-
-  useEffect(() => {
-    if (!router.isReady) return
-    if (router.asPath === props.href) {
-      setIsActive(true)
-    } else {
-      setIsActive(false)
-    }
-  }, [router.isReady, router.asPath, props.href])
-
+export const AppLink = (props: PropsWithChildren<LinkProps & Props>) => {
   return (
     <Link {...props} passHref>
-      <A isActive={isActive}>{props.children}</A>
+      <A isActive={props.isActive || false}>{props.children}</A>
     </Link>
   )
 }
