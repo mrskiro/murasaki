@@ -1,4 +1,5 @@
 import { Meta } from "@/shared/lib/meta"
+import { findDBWherePublished } from "@/shared/lib/notion/api"
 import { parseByURL } from "@/shared/lib/parser/rss"
 import type { GetStaticProps, NextPage } from "next"
 import { PostItem } from "./components/PostItem"
@@ -10,8 +11,8 @@ type Props = {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const res = await parseByURL("https://qiita.com/purpleeeee/feed.atom")
-  const posts: Post[] = res.items.map((v) => {
+  const feed = await parseByURL("https://qiita.com/purpleeeee/feed.atom")
+  const postsFromFeed: Post[] = feed.items.map((v) => {
     return {
       title: v.title || "",
       content: v.content || "",
@@ -19,14 +20,31 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
       date: v.isoDate || "",
     }
   })
+  const res = await findDBWherePublished()
+  const postsFromNotion: Post[] = res.map((v) => {
+    const nameProperty = v.properties["Name"]
+    if (nameProperty.type !== "title") {
+      throw new Error("internal error")
+    }
+    return {
+      title: nameProperty.title[0]?.plain_text,
+      content: "",
+      date: v.created_time,
+      link: v.url,
+    }
+  })
+
+  const posts = [...postsFromFeed, ...postsFromNotion]
   return {
     props: {
       posts,
+      res,
     },
   }
 }
 
 const Page: NextPage<Props> = (props) => {
+  // console.log(props.posts)
   return (
     <div>
       <Meta title="Posts" />
