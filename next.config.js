@@ -7,6 +7,7 @@ const nextConfig = {
       destination: "/root",
     },
   ],
+  pageExtensions: ["page.tsx"],
 }
 
 module.exports = nextConfig
