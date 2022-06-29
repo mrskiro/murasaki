@@ -1,8 +1,11 @@
 import * as Notion from "@notionhq/client"
+import { load } from "../config"
 import { PageObj } from "./types"
 
+const { NOTION_TOKEN } = load()
+
 const client = new Notion.Client({
-  auth: "secret_Yw1lNzRWtre9xfKGgQxE9uk3b5Gg9i8QnQT2kHoFTH9",
+  auth: NOTION_TOKEN,
 })
 
 const id = "3447ba89113a4e9484ca06e98ea47aed"
