@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 export const Wrap = styled.div`
   min-height: 100vh;
-  padding: 10% 20%;
+  padding: 10% 16%;
   display: flex;
   justify-content: space-between;
   gap: 16px;

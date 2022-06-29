@@ -8,8 +8,6 @@ const client = new Notion.Client({
   auth: NOTION_TOKEN,
 })
 
-const id = "3447ba89113a4e9484ca06e98ea47aed"
-
 export const findDBWherePublished = async (): Promise<PageObj[]> => {
   const res = await client.databases.query({
     database_id: "3dc71c3166304af6bcde94eb88258b0a",
