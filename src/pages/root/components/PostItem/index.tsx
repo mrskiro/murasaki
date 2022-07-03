@@ -8,14 +8,14 @@ type Props = {
   type: Post["type"]
   title: string
   link: string
-  date: string
+  createdAt: string
 }
 
 export const PostItem = (props: Props) => {
   return (
     <S.Wrap>
       <div>
-        <S.DateLabel>{format(props.date)}</S.DateLabel>
+        <S.DateLabel>{format(props.createdAt)}</S.DateLabel>
       </div>
       {props.type === "internal" ? (
         <AppLink href={`${props.link}`}>

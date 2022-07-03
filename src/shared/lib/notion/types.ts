@@ -1,3 +1,11 @@
+// notion-sdk-jsの型定義が壊れているので定義
+
+export type PageMeta = {
+  title: string
+  created_time: string
+  last_edited_time: string
+}
+
 export type PageObj = {
   object: "page"
   id: string
@@ -148,7 +156,7 @@ type DateResponse = {
   time_zone: string | null
 }
 
-type RichTextItemResponse =
+export type RichTextItemResponse =
   | {
       type: "text"
       text: {
@@ -265,3 +273,42 @@ type SelectColor =
   | "purple"
   | "pink"
   | "red"
+
+export type BlockObj = {
+  id: string
+} & (HeadingBlock | ParagraphBlock | CodeBlock | BulletedListItemBlock)
+
+type HeadingBlock<T extends number = 1 | 2 | 3> = T extends infer N extends number ? {
+  type: `heading_${N}`
+} & {
+  [key in `heading_${T}`]: {
+    rich_text: RichTextItemResponse[]
+    color: string
+  }
+} : never
+
+
+type ParagraphBlock = {
+  type: "paragraph"
+  paragraph: {
+    rich_text: RichTextItemResponse[]
+    color: string
+  }
+}
+
+type CodeBlock = {
+  type: "code"
+  code: {
+    rich_text: RichTextItemResponse[]
+    caption: RichTextItemResponse[]
+    language: string
+  }
+}
+
+type BulletedListItemBlock = {
+  type: "bulleted_list_item"
+  bulleted_list_item: {
+    rich_text: RichTextItemResponse[]
+    color: string
+  }
+}

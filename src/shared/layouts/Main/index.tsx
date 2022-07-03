@@ -16,6 +16,9 @@ export const MainLayout = (props: PropsWithChildren<Props>) => {
         <Navigation />
       </S.Header>
       <S.Main>{props.children}</S.Main>
+      <S.RightMenu>
+        <a>a</a>
+      </S.RightMenu>
     </S.Wrap>
   )
 }

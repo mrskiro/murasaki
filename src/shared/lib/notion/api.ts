@@ -1,6 +1,6 @@
 import * as Notion from "@notionhq/client"
-import { load } from "../config"
-import { PageObj } from "./types"
+import { load } from "@/shared/lib/config"
+import { BlockObj, PageObj } from "./types"
 
 const { NOTION_TOKEN } = load()
 
@@ -29,6 +29,19 @@ export const findDBWherePublished = async (): Promise<PageObj[]> => {
       },
     ],
   })
-  // notion-sdk-jsの型定義が壊れている
   return res.results as PageObj[]
+}
+
+export const findPageBlocksById = async (id: string): Promise<BlockObj[]> => {
+  const res = await client.blocks.children.list({
+    block_id: id,
+  })
+  return res.results as BlockObj[]
+}
+
+export const findMetaById = async (id: string): Promise<PageObj> => {
+  const res = (await client.pages.retrieve({
+    page_id: id,
+  })) as PageObj
+  return res
 }
