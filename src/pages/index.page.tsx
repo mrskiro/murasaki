@@ -4,7 +4,7 @@ import { Meta } from "@/shared/lib/meta"
 import { parseByURL } from "@/shared/lib/parser/rss"
 import { findPosts } from "@/shared/features/post/api"
 import { Post } from "@/shared/features/post/types/post"
-import { PostItem } from "./components/PostItem"
+import { PostItem } from "./root/components/PostItem"
 import * as S from "./styled"
 
 type Props = {
