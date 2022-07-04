@@ -11,4 +11,7 @@ export const GlobalStyle = createGlobalStyle`
   ol, ul {
     list-style: none;
   }
+  * {
+    color: #333
+  }
 `
