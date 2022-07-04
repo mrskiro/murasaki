@@ -3,9 +3,8 @@ import { load } from "@/shared/lib/config"
 import { Meta } from "@/shared/lib/meta"
 import { parseByURL } from "@/shared/lib/parser/rss"
 import { findPosts } from "@/shared/features/post/api"
+import { Posts } from "@/shared/features/post/components/Posts"
 import { Post } from "@/shared/features/post/types/post"
-import { PostItem } from "./root/components/PostItem"
-import * as S from "./styled"
 
 type Props = {
   posts: Post[]
@@ -46,21 +45,10 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 
 const Page: NextPage<Props> = (props) => {
   return (
-    <div>
+    <>
       <Meta title="Posts" />
-      <S.Ul>
-        {props.posts.map((v) => (
-          <li key={v.title}>
-            <PostItem
-              type={v.type}
-              title={v.title}
-              link={v.link}
-              createdAt={v.createdAt}
-            />
-          </li>
-        ))}
-      </S.Ul>
-    </div>
+      <Posts posts={props.posts} />
+    </>
   )
 }
 
