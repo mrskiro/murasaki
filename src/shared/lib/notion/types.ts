@@ -276,6 +276,7 @@ type SelectColor =
 
 export type BlockObj = {
   id: string
+  has_children: boolean
 } & (HeadingBlock | ParagraphBlock | CodeBlock | BulletedListItemBlock)
 
 type HeadingBlock<T extends number = 1 | 2 | 3> = T extends infer N extends number ? {

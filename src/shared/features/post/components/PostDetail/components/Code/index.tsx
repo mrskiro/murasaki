@@ -18,7 +18,7 @@ import "prismjs/components/prism-css.min.js"
 import "prismjs/components/prism-css-extras.min.js"
 
 type Props = {
-  text: RichText
+  text: RichText[]
   language: string
 }
 
@@ -30,7 +30,7 @@ export const Code = (props: Props) => {
   return (
     <Pre className="line-numbers">
       <code className={`language-${props.language}`}>
-        {props.text.plainText}
+        {props.text[0]?.plainText}
       </code>
     </Pre>
   )

@@ -1,5 +1,25 @@
-const Page = () => {
-  return <div>about page</div>
+import { findPostDetailById } from "@/shared/features/post/api"
+import { PostDetail } from "@/shared/features/post/components/PostDetail"
+import * as PostTypes from "@/shared/features/post/types"
+import { load } from "@/shared/lib/config"
+import { GetStaticProps } from "next"
+
+type Props = {
+  aboutPageDetail: PostTypes.PostDetail
+}
+
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  const { ABOUT_PAGE_ID } = load()
+  const aboutPageDetail = await findPostDetailById(ABOUT_PAGE_ID)
+  return {
+    props: {
+      aboutPageDetail,
+    },
+  }
+}
+
+const Page = (props: Props) => {
+  return <PostDetail postDetail={props.aboutPageDetail} />
 }
 
 export default Page

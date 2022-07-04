@@ -1,9 +1,6 @@
 import styled from "styled-components"
 
 export const Wrap = styled.article`
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
   line-height: 1.8;
 `
 export const Title = styled.h1`

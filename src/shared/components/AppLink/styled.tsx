@@ -1,6 +1,11 @@
 import styled from "styled-components"
 
-export const A = styled.a<{ isActive?: boolean }>`
+export const A = styled.a`
+  cursor: pointer;
+  text-decoration: underline;
+`
+
+export const Nav = styled.a<{ isActive?: boolean }>`
   cursor: pointer;
   text-decoration: ${(props) => (props.isActive ? "underline" : "inherit")};
   text-underline-offset: 4px;

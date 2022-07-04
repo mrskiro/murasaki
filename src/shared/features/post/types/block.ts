@@ -57,7 +57,13 @@ type BlockType = typeof BlockType[keyof typeof BlockType]
 
 export type Block = {
   id: string
-} & (HeadingBlock | ParagraphBlock | CodeBlock | BulletedListItemBlock)
+} & Children &
+  (HeadingBlock | ParagraphBlock | CodeBlock | BulletedListItemBlock)
+
+type Children = {
+  hasChildren: boolean
+  children: Block[]
+}
 
 export type HeadingBlock = {
   type: Extract<BlockType, `heading${number}`>

@@ -11,18 +11,22 @@ type Props = {
 }
 
 export const PostDetail = (props: Props) => {
+  // TODO: これだと再帰できないのでどうするか考える
+  // 現状ulとliが1-1でも問題ない
+
   // ulの要素の始まりと終わりがわからないので詰め直す
-  const blocks = props.postDetail.blocks.reduce<Types.Block[]>((p, c, i) => {
-    if (c.type !== "bulletedListItem") return [...p, c]
-    if (i === 0) return [...p, c]
-    const lastItem = p[p.length - 1]
-    if (lastItem.type !== "bulletedListItem") return [...p, c]
-    const { richText } = lastItem
-    return [
-      ...p.slice(0, -1),
-      { ...lastItem, richText: [...richText, ...c.richText] },
-    ]
-  }, [])
+  // const blocks = props.postDetail.blocks.reduce<Types.Block[]>((p, c, i) => {
+  //   if (c.type !== "bulletedListItem") return [...p, c]
+  //   if (i === 0) return [...p, c]
+  //   const lastItem = p[p.length - 1]
+  //   if (!lastItem) return [...p, c]
+  //   if (lastItem.type !== "bulletedListItem") return [...p, c]
+  //   const { richText } = lastItem
+  //   return [
+  //     ...p.slice(0, -1),
+  //     { ...lastItem, richText: [...richText, ...c.richText] },
+  //   ]
+  // }, [])
 
   return (
     <S.Wrap>
@@ -30,27 +34,25 @@ export const PostDetail = (props: Props) => {
         <S.Title>{props.postDetail.title.plainText}</S.Title>
         <S.DateLabel>{format(props.postDetail.createdAt)}</S.DateLabel>
       </div>
-      {blocks.map(renderBlock)}
+      {props.postDetail.blocks.map(renderBlock)}
     </S.Wrap>
   )
 }
 
 const renderBlock = (v: Types.Block) => {
-  const [text] = v.richText
-  if (!text) return null
   switch (v.type) {
     case "heading1":
-      return <Heading as="h1" text={text} />
+      return <Heading as="h1" text={v.richText} />
     case "heading2":
-      return <Heading as="h2" text={text} />
+      return <Heading as="h2" text={v.richText} />
     case "heading3":
-      return <Heading as="h3" text={text} />
+      return <Heading as="h3" text={v.richText} />
     case "paragraph":
-      return <Paragraph text={text} />
+      return <Paragraph text={v.richText} />
     case "bulletedListItem":
-      return <BulletedList items={v.richText} />
+      return <BulletedList blocks={[v]} />
     case "code":
-      return <Code text={text} language={v.language} />
+      return <Code text={v.richText} language={v.language} />
     default:
       return null
   }

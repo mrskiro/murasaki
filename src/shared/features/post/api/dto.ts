@@ -7,13 +7,13 @@ import { Post, Block, RichText } from "../types"
 
 export const toPostFromNotion = (v: PageObj): Post => {
   const nameProperty = v.properties["Name"]
-  if (nameProperty.type !== "title") {
+  if (nameProperty?.type !== "title") {
     throw new Error("internal error")
   }
   return {
     id: v.id,
     type: "internal",
-    title: nameProperty.title[0]?.plain_text,
+    title: nameProperty.title[0]?.plain_text || "",
     link: `/posts/${v.id}`,
     createdAt: v.created_time,
     updatedAt: v.last_edited_time,
@@ -23,6 +23,8 @@ export const toPostFromNotion = (v: PageObj): Post => {
 export const toBlockFromNotion = (v: BlockObj): Block => {
   const base = {
     id: v.id,
+    hasChildren: v.has_children,
+    children: [],
   }
   const { type } = v
   switch (type) {

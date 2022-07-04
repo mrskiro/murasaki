@@ -4,17 +4,19 @@ import * as React from "react"
 
 type Props = {
   as: As
-  text: RichText
+  text: RichText[]
 }
 
 export const Heading = (props: Props) => {
   const H = elementMap[props.as]
   if (!H) return null
-  return <H>{props.text.plainText}</H>
+  return <H>{props.text[0]?.plainText}</H>
 }
 
 const base = css`
   font-weight: bold;
+  margin-top: 24px;
+  margin-bottom: 8px;
 `
 const H1 = styled.h1`
   ${base};

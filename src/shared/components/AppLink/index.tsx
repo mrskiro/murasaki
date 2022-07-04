@@ -1,6 +1,6 @@
 import Link, { LinkProps } from "next/link"
 import { ComponentPropsWithoutRef, PropsWithChildren } from "react"
-import { A } from "./styled"
+import * as S from "./styled"
 
 type Props =
   | ({
@@ -14,11 +14,11 @@ type Props =
 export const AppLink = (props: PropsWithChildren<Props>) => {
   if (props.isAnchor) {
     const { children, ...anchorProps } = props
-    return <A {...anchorProps}>{props.children}</A>
+    return <S.A {...anchorProps}>{props.children}</S.A>
   }
   return (
     <Link {...props} passHref>
-      <A isActive={props.isActive || false}>{props.children}</A>
+      <S.Nav isActive={props.isActive || false}>{props.children}</S.Nav>
     </Link>
   )
 }

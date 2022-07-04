@@ -15,7 +15,7 @@ export const Navigation = () => {
         </li>
         <li>
           <AppLink href="/about" isActive={router.pathname === "/about"}>
-            Profile
+            About
           </AppLink>
         </li>
       </S.Ul>
