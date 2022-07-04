@@ -10,7 +10,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const paths = posts.map((v) => `/posts/${v.id}`)
   return {
     paths,
-    fallback: "blocking",
+    fallback: true,
   }
 }
 
@@ -36,7 +36,10 @@ export const getStaticProps: GetStaticProps<Props, { param: string }> = async (
 }
 
 const Page: NextPage<Props> = (props) => {
-  // const router = useRouter()
+  const router = useRouter()
+  if (router.isFallback) {
+    return <p>loading...</p>
+  }
   return (
     <div>
       <Meta title={props.postDetail.title.plainText} />
