@@ -53,17 +53,17 @@ export const PostDetail = (props: Props) => {
 const renderBlock = (v: Types.Block) => {
   switch (v.type) {
     case "heading1":
-      return <Heading as="h1" text={v.richText} />
+      return <Heading key={v.id} as="h1" text={v.richText} />
     case "heading2":
-      return <Heading as="h2" text={v.richText} />
+      return <Heading key={v.id} as="h2" text={v.richText} />
     case "heading3":
-      return <Heading as="h3" text={v.richText} />
+      return <Heading key={v.id} as="h3" text={v.richText} />
     case "paragraph":
-      return <Paragraph text={v.richText} />
+      return <Paragraph key={v.id} text={v.richText} />
     case "bulletedListItem":
-      return <BulletedList blocks={[v]} />
+      return <BulletedList key={v.id} blocks={[v]} />
     case "code":
-      return <Code text={v.richText} language={v.language} />
+      return <Code key={v.id} text={v.richText} language={v.language} />
     default:
       return null
   }
