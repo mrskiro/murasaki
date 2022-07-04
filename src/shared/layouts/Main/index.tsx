@@ -18,9 +18,9 @@ export const MainLayout = (props: PropsWithChildren<Props>) => {
         </S.Header>
 
         <S.Main>{props.children}</S.Main>
-        <S.RightMenu>
+        {/* <S.RightMenu>
           <a>a</a>
-        </S.RightMenu>
+        </S.RightMenu> */}
       </S.ThreeColumn>
       <S.Hr />
       <S.Footer>
