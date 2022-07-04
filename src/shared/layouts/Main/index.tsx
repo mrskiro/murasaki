@@ -1,6 +1,6 @@
-import { AppLink } from "@/shared/components/AppLink"
 import { PropsWithChildren } from "react"
 import { GoMarkGithub } from "react-icons/go"
+import { AppLink } from "@/shared/components/AppLink"
 import { Navigation } from "./Navigation"
 import * as S from "./styled"
 

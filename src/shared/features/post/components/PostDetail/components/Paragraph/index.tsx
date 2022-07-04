@@ -1,6 +1,6 @@
 import styled from "styled-components"
-import { RichText } from "@/shared/features/post/types"
 import { AppLink } from "@/shared/components/AppLink"
+import { RichText } from "@/shared/features/post/types"
 
 type Props = {
   text: RichText[]

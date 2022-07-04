@@ -1,11 +1,11 @@
 import type { GetStaticProps, NextPage } from "next"
+import { load } from "@/shared/lib/config"
 import { Meta } from "@/shared/lib/meta"
 import { parseByURL } from "@/shared/lib/parser/rss"
-import { PostItem } from "./components/PostItem"
-import { load } from "@/shared/lib/config"
-import { Post } from "@/shared/features/post/types/post"
-import * as S from "./styled"
 import { findPosts } from "@/shared/features/post/api"
+import { Post } from "@/shared/features/post/types/post"
+import { PostItem } from "./components/PostItem"
+import * as S from "./styled"
 
 type Props = {
   posts: Post[]

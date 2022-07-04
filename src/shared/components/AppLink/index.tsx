@@ -1,5 +1,5 @@
-import Link, { LinkProps } from "next/link"
 import { ComponentPropsWithoutRef, PropsWithChildren } from "react"
+import Link, { LinkProps } from "next/link"
 import * as S from "./styled"
 
 type Props =

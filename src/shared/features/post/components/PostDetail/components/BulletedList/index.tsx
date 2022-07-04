@@ -1,6 +1,6 @@
 import styled from "styled-components"
-import { Block } from "@/shared/features/post/types"
 import { AppLink } from "@/shared/components/AppLink"
+import { Block } from "@/shared/features/post/types"
 
 type Props = {
   blocks: Block[]

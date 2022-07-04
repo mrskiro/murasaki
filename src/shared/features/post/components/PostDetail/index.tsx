@@ -1,5 +1,5 @@
-import * as Types from "@/shared/features/post/types"
 import { format } from "@/shared/lib/date"
+import * as Types from "@/shared/features/post/types"
 import { BulletedList } from "./components/BulletedList"
 import { Code } from "./components/Code"
 import { Heading } from "./components/Heading"

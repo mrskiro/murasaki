@@ -1,8 +1,8 @@
+import { GetStaticProps } from "next"
+import { load } from "@/shared/lib/config"
 import { findPostDetailById } from "@/shared/features/post/api"
 import { PostDetail } from "@/shared/features/post/components/PostDetail"
 import * as PostTypes from "@/shared/features/post/types"
-import { load } from "@/shared/lib/config"
-import { GetStaticProps } from "next"
 
 type Props = {
   aboutPageDetail: PostTypes.PostDetail

@@ -1,9 +1,9 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from "next"
 import { useRouter } from "next/router"
 import { Meta } from "@/shared/lib/meta"
-import * as PostTypes from "@/shared/features/post/types"
 import { findPostDetailById, findPosts } from "@/shared/features/post/api"
 import { PostDetail } from "@/shared/features/post/components/PostDetail"
+import * as PostTypes from "@/shared/features/post/types"
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = await findPosts()

@@ -1,6 +1,6 @@
+import * as React from "react"
 import styled, { css } from "styled-components"
 import { RichText } from "@/shared/features/post/types"
-import * as React from "react"
 
 type Props = {
   as: As

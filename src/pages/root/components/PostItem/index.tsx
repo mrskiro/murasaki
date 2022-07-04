@@ -1,9 +1,9 @@
 import { GoLinkExternal } from "react-icons/go"
-import { AppLink } from "@/shared/components/AppLink"
 import { format } from "@/shared/lib/date"
+import { AppLink } from "@/shared/components/AppLink"
 import { Post } from "@/shared/features/post/types"
-import * as S from "./styled"
 import { ExternalTag } from "./components/Tag"
+import * as S from "./styled"
 
 type Props = {
   type: Post["type"]

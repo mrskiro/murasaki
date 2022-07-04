@@ -1,3 +1,4 @@
+import { ServerStyleSheet } from "styled-components"
 import Document, {
   DocumentContext,
   DocumentInitialProps,
@@ -6,7 +7,6 @@ import Document, {
   Main,
   NextScript,
 } from "next/document"
-import { ServerStyleSheet } from "styled-components"
 
 class MyDocument extends Document {
   static async getInitialProps(
