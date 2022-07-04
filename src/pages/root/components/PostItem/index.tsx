@@ -1,8 +1,9 @@
 import { GoLinkExternal } from "react-icons/go"
 import { AppLink } from "@/shared/components/AppLink"
 import { format } from "@/shared/lib/date"
-import { Post } from "../../types"
+import { Post } from "@/shared/features/post/types"
 import * as S from "./styled"
+import { ExternalTag } from "./components/Tag"
 
 type Props = {
   type: Post["type"]
@@ -33,13 +34,9 @@ export const PostItem = (props: Props) => {
             {`# ${props.title}`}
             <GoLinkExternal size="12px" />
           </S.Title>
+          {props.type === "external" && <ExternalTag link={props.link} />}
         </AppLink>
       )}
     </S.Wrap>
   )
-}
-
-const colors = {
-  qiita: "#55c500",
-  zenn: "#3ea8ff",
 }
