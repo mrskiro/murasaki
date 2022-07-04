@@ -30,10 +30,21 @@ export const PostDetail = (props: Props) => {
 
   return (
     <S.Wrap>
-      <div>
+      <S.MetaWrap>
         <S.Title>{props.postDetail.title.plainText}</S.Title>
-        <S.DateLabel>{format(props.postDetail.createdAt)}</S.DateLabel>
-      </div>
+        <S.MetaDetailWrap>
+          <div></div>
+          <div>
+            <S.DateLabel>{`${format(props.postDetail.createdAt)}`}</S.DateLabel>
+            {format(props.postDetail.updatedAt) !==
+              format(props.postDetail.createdAt) && (
+              <S.DateLabel>{`最終更新：${format(
+                props.postDetail.updatedAt
+              )}`}</S.DateLabel>
+            )}
+          </div>
+        </S.MetaDetailWrap>
+      </S.MetaWrap>
       {props.postDetail.blocks.map(renderBlock)}
     </S.Wrap>
   )
