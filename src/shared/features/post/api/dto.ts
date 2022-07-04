@@ -72,6 +72,9 @@ export const toBlockFromNotion = (v: BlockObj): Block => {
         richText: v.bulleted_list_item.rich_text.map(toRichText),
       }
     default:
+      // TODO: 未対応
+
+      // @ts-ignore
       return {}
     // throw new Error(`invalid block type: ${type}`)
   }
