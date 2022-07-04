@@ -23,12 +23,7 @@ export const PostItem = (props: Props) => {
           <S.Title>{`# ${props.title}`}</S.Title>
         </AppLink>
       ) : (
-        <AppLink
-          href={`${props.link}`}
-          isAnchor
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <AppLink href={`${props.link}`} isExternal>
           {/* 色変える */}
           <S.Title>
             {`# ${props.title}`}

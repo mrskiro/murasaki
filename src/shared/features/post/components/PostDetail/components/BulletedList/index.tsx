@@ -14,7 +14,7 @@ export const BulletedList = (props: Props) => {
           {b.richText.map((v) => (
             <Li key={v.plainText}>
               {v.href ? (
-                <AppLink isAnchor target="_blank" href={v.href}>
+                <AppLink isExternal href={v.href}>
                   {v.plainText}
                 </AppLink>
               ) : (

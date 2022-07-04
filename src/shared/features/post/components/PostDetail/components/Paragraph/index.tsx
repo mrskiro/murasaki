@@ -11,7 +11,7 @@ export const Paragraph = (props: Props) => {
   if (text?.href) {
     return (
       <P>
-        <AppLink isAnchor href={text.href} target="_brank">
+        <AppLink isExternal href={text.href}>
           {text.plainText}
         </AppLink>
       </P>

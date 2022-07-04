@@ -4,17 +4,21 @@ import * as S from "./styled"
 
 type Props =
   | ({
-      isAnchor: true
+      isExternal: true
     } & ComponentPropsWithoutRef<"a">)
   | ({
-      isAnchor?: false
+      isExternal?: false
       isActive?: boolean
     } & LinkProps)
 
 export const AppLink = (props: PropsWithChildren<Props>) => {
-  if (props.isAnchor) {
+  if (props.isExternal) {
     const { children, ...anchorProps } = props
-    return <S.A {...anchorProps}>{props.children}</S.A>
+    return (
+      <S.A {...anchorProps} target="_blank">
+        {props.children}
+      </S.A>
+    )
   }
   return (
     <Link {...props} passHref>
