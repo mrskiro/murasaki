@@ -6,7 +6,7 @@ export const Wrap = styled.div`
   gap: 2px;
 `
 
-export const DateLabel = styled.span`
+export const DateLabel = styled.time`
   font-size: 12px;
 `
 
