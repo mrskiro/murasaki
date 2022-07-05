@@ -8,13 +8,21 @@ import { Post, Block, RichText } from "../types"
 export const toPostFromNotion = (v: PageObj): Post => {
   const nameProperty = v.properties["Name"]
   if (nameProperty?.type !== "title") {
-    throw new Error("internal error")
+    throw new Error("not exist name property")
+  }
+  const slugProperty = v.properties["Slug"]
+  if (slugProperty?.type !== "rich_text") {
+    throw new Error("not exist slug property")
+  }
+  const [slug] = slugProperty.rich_text
+  if (!slug) {
+    throw new Error("not exist slug rich text property")
   }
   return {
     id: v.id,
     type: "internal",
     title: nameProperty.title[0]?.plain_text || "",
-    link: `/posts/${v.id}`,
+    link: `/posts/${slug.plain_text}`,
     createdAt: v.created_time,
     updatedAt: v.last_edited_time,
   }

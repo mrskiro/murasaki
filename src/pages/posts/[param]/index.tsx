@@ -1,7 +1,7 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from "next"
 import { useRouter } from "next/router"
 import { Meta } from "@/shared/lib/meta"
-import { findPostDetailById, findPosts } from "@/shared/features/post/api"
+import { findPostDetailBySlug, findPosts } from "@/shared/features/post/api"
 import { PostDetail } from "@/shared/features/post/components/PostDetail"
 import * as PostTypes from "@/shared/features/post/types"
 
@@ -21,12 +21,12 @@ type Props = {
 export const getStaticProps: GetStaticProps<Props, { param: string }> = async (
   ctx
 ) => {
-  const id = ctx.params?.param
-  if (!id) {
-    throw new Error("not exist param")
+  const slug = ctx.params?.param
+  if (!slug) {
+    throw new Error("not exist slug")
   }
 
-  const postDetail = await findPostDetailById(id)
+  const postDetail = await findPostDetailBySlug(slug)
 
   return {
     props: {
