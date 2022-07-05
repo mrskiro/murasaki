@@ -3,12 +3,18 @@ import styled from "styled-components"
 export const Wrap = styled.div`
   min-height: 100vh;
   padding: 10% 10% 0px;
+  @media (max-width: 480px) {
+    padding: 6%;
+  }
 `
 
 export const ThreeColumn = styled.div`
   display: flex;
   justify-content: space-between;
   gap: 16px;
+  @media (max-width: 480px) {
+    flex-direction: column;
+  }
 `
 
 export const Header = styled.header`
