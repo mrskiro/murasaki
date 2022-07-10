@@ -7,17 +7,18 @@ type Props = {
 }
 
 export const Paragraph = (props: Props) => {
-  const [text] = props.text
-  if (text?.href) {
-    return (
-      <P>
-        <AppLink isExternal href={text.href}>
-          {text.plainText}
-        </AppLink>
-      </P>
-    )
-  }
-  return <P>{text?.plainText}</P>
+  return (
+    <P>
+      {props.text.map((v, i) => {
+        if (!v.href) return v.plainText
+        return (
+          <AppLink isExternal href={v.href} key={i}>
+            {v.plainText}
+          </AppLink>
+        )
+      })}
+    </P>
+  )
 }
 
 const P = styled.p`
