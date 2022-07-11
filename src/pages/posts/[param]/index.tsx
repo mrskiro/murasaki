@@ -7,7 +7,7 @@ import * as PostTypes from "@/shared/features/post/types"
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = await findPosts()
-  const paths = posts.map((v) => `/posts/${v.id}`)
+  const paths = posts.map((v) => v.link)
   return {
     paths,
     fallback: true,
