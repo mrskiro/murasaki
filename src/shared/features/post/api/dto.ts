@@ -103,6 +103,17 @@ export const toRichText = (v: RichTextItemResponse): RichText => {
           ...v.annotations,
         },
       }
+    case "mention":
+      return {
+        type: "mention",
+        plainText: v.plain_text,
+        href: v.href,
+        // TODO
+        mention: {},
+        annotations: {
+          ...v.annotations,
+        },
+      }
     default:
       throw new Error(`invalid rich text type: ${v.type}`)
   }
