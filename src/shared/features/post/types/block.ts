@@ -93,15 +93,17 @@ export type BulletedListItemBlock = {
 export type RichText = {
   plainText: string
   href: string | null
-  // annotations: {
-  //   bold: boolean
-  //   italic: boolean
-  //   strikethrough: boolean
-  //   underline: boolean
-  //   code: boolean
-  //   color: string
-  // }
+  annotations: Annotations
 } & (TextRichText | MentionRichText | EquationRichText)
+
+export type Annotations = {
+  bold: boolean
+  italic: boolean
+  strikethrough: boolean
+  underline: boolean
+  code: boolean
+  color: string
+}
 
 type TextRichText = {
   type: "text"

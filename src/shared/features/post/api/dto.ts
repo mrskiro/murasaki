@@ -99,6 +99,9 @@ export const toRichText = (v: RichTextItemResponse): RichText => {
           content: v.text.content,
           link: v.text.link,
         },
+        annotations: {
+          ...v.annotations,
+        },
       }
     default:
       throw new Error(`invalid rich text type: ${v.type}`)
