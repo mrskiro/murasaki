@@ -16,21 +16,21 @@ export const Heading = (props: Props) => {
 const base = css`
   font-weight: bold;
   margin-top: 24px;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 `
 const H1 = styled.h1`
   ${base};
-  font-size: 20px;
+  font-size: 24px;
 `
 
 const H2 = styled.h2`
   ${base};
-  font-size: 18px;
+  font-size: 20px;
 `
 
 const H3 = styled.h3`
   ${base};
-  font-size: 16px;
+  font-size: 18px;
 `
 type As = "h1" | "h2" | "h3"
 
