@@ -31,7 +31,6 @@ export const Meta = (props: Props) => {
       <meta property="og:image" content={og} />
       <meta property="og:url" content={fullPath} />
       <meta property="og:site_name" content="murasak1.com" />
-      <meta property="og:description" content={props.title} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
     </Head>
