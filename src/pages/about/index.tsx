@@ -22,7 +22,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 const Page = (props: Props) => {
   return (
     <>
-      <Meta title="About" />
+      <Meta title="About" ogType="article" />
       <PostDetail postDetail={props.aboutPageDetail} />
     </>
   )
