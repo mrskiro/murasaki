@@ -42,7 +42,7 @@ const Page: NextPage<Props> = (props) => {
   }
   return (
     <div>
-      <Meta title={props.postDetail.title.plainText} />
+      <Meta title={props.postDetail.title.plainText} ogType="article" />
       <PostDetail postDetail={props.postDetail} />
     </div>
   )

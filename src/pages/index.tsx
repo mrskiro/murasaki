@@ -46,7 +46,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 const Page: NextPage<Props> = (props) => {
   return (
     <>
-      <Meta title="Posts" />
+      <Meta title="Top" ogType="website" />
       <Posts posts={props.posts} />
     </>
   )
