@@ -21,7 +21,9 @@ export const Meta = (props: Props) => {
       />
       <title>{`${props.title}`}</title>
 
-      <meta name="description" key="description" content={props.title} />
+      {props.description && (
+        <meta name="description" content={props.description} />
+      )}
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:creator" content="@purp1eeeee" />
