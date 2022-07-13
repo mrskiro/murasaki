@@ -22,10 +22,11 @@ export const Header = styled.header`
   flex-direction: column;
   gap: 2px;
   flex: 1;
-
-  position: sticky;
-  top: 10%;
-  height: 100%;
+  @media (min-width: 480px) {
+    position: sticky;
+    top: 10%;
+    height: 100%;
+  }
 `
 
 export const Main = styled.main`
