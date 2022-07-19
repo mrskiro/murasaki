@@ -43,6 +43,7 @@ export const LeftMenu = styled.div`
 
 export const Main = styled.main`
   flex: 6;
+  padding-bottom: 200px;
 `
 
 export const RightMenu = styled.aside`
