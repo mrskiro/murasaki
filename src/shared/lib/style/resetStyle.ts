@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components"
 
-export const GlobalStyle = createGlobalStyle`
+export const ResetStyle = createGlobalStyle`
   *:where(:not(iframe, canvas, img, video):not(svg *)) {
     all: unset;
     display: revert;
@@ -10,8 +10,5 @@ export const GlobalStyle = createGlobalStyle`
   }
   ol, ul {
     list-style: none;
-  }
-  * {
-    color: #333
   }
 `

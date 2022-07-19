@@ -1,8 +1,12 @@
 import styled from "styled-components"
 
 export const Wrap = styled.div`
+  position: relative;
   min-height: 100vh;
   padding: 10% 10% 0px;
+  background-color: ${(props) => props.theme.background};
+  color: ${(props) => props.theme.color};
+  transition: all, 0.4s;
   @media (max-width: 480px) {
     padding: 6%;
   }
@@ -62,4 +66,10 @@ export const FooterDetail = styled.div`
 
 export const Small = styled.small`
   font-size: 12px;
+`
+
+export const SwitcherWrap = styled.div`
+  position: absolute;
+  top: 0px;
+  right: 12%;
 `

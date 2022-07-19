@@ -1,6 +1,7 @@
 import { PropsWithChildren } from "react"
 import { GoMarkGithub } from "react-icons/go"
 import { AppLink } from "@/shared/components/AppLink"
+import { Switcher } from "@/shared/features/theme/components/Switcher"
 import { Navigation } from "./Navigation"
 import * as S from "./styled"
 
@@ -9,6 +10,9 @@ type Props = {}
 export const MainLayout = (props: PropsWithChildren<Props>) => {
   return (
     <S.Wrap>
+      <S.SwitcherWrap>
+        <Switcher></Switcher>
+      </S.SwitcherWrap>
       <S.ThreeColumn>
         <S.Header>
           <S.H1>
