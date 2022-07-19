@@ -33,7 +33,12 @@ class MyDocument extends Document {
   render(): JSX.Element {
     return (
       <Html lang="ja">
-        <Head />
+        <Head>
+          <link
+            href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=optional"
+            rel="stylesheet"
+          />
+        </Head>
         <body>
           <Main />
           <NextScript />

@@ -1,6 +1,7 @@
 import styled from "styled-components"
 
 export const Wrap = styled.div`
+  font-family: "Noto Sans JP";
   position: relative;
   min-height: 100vh;
   padding: 10% 10% 0px;
