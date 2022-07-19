@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint --dir .",
     "lint:fix": "next lint --dir . --fix",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@notionhq/client": "1.0.4",
@@ -29,6 +30,7 @@
     "eslint": "8.18.0",
     "eslint-config-next": "12.1.6",
     "eslint-plugin-import": "2.26.0",
+    "husky": "8.0.0",
     "typescript": "4.7.4"
   }
 }
