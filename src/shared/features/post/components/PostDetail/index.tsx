@@ -3,6 +3,7 @@ import * as Types from "@/shared/features/post/types"
 import { BulletedList } from "./components/BulletedList"
 import { Code } from "./components/Code"
 import { Heading } from "./components/Heading"
+import { Image } from "./components/Image"
 import { Paragraph } from "./components/Paragraph"
 import * as S from "./styled"
 
@@ -64,6 +65,8 @@ const renderBlock = (v: Types.Block) => {
       return <BulletedList key={v.id} blocks={[v]} />
     case "code":
       return <Code key={v.id} text={v.richText} language={v.language} />
+    case "image":
+      return <Image key={v.id} src={v.url} alt="" />
     default:
       return null
   }

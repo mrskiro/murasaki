@@ -58,7 +58,13 @@ type BlockType = typeof BlockType[keyof typeof BlockType]
 export type Block = {
   id: string
 } & Children &
-  (HeadingBlock | ParagraphBlock | CodeBlock | BulletedListItemBlock)
+  (
+    | HeadingBlock
+    | ParagraphBlock
+    | CodeBlock
+    | BulletedListItemBlock
+    | ImageBlock
+  )
 
 type Children = {
   hasChildren: boolean
@@ -88,6 +94,11 @@ export type BulletedListItemBlock = {
   type: typeof BlockType["bulletedListItem"]
   richText: RichText[]
   color: string
+}
+
+export type ImageBlock = {
+  type: typeof BlockType["image"]
+  url: string
 }
 
 export type RichText = {

@@ -277,7 +277,7 @@ type SelectColor =
 export type BlockObj = {
   id: string
   has_children: boolean
-} & (HeadingBlock | ParagraphBlock | CodeBlock | BulletedListItemBlock)
+} & (HeadingBlock | ParagraphBlock | CodeBlock | BulletedListItemBlock | ImageBlock)
 
 type HeadingBlock<T extends number = 1 | 2 | 3> = T extends infer N extends number ? {
   type: `heading_${N}`
@@ -311,5 +311,16 @@ type BulletedListItemBlock = {
   bulleted_list_item: {
     rich_text: RichTextItemResponse[]
     color: string
+  }
+}
+
+type ImageBlock = {
+  type: "image"
+  image: {
+    type: 'file'
+    file: {
+      url: string
+      expiry_time: string
+    }
   }
 }

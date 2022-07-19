@@ -79,6 +79,12 @@ export const toBlockFromNotion = (v: BlockObj): Block => {
         color: v.bulleted_list_item.color,
         richText: v.bulleted_list_item.rich_text.map(toRichText),
       }
+    case "image":
+      return {
+        ...base,
+        type: "image",
+        url: v.image.file.url,
+      }
     default:
       // TODO: 未対応
 
