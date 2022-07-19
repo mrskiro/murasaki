@@ -50,6 +50,9 @@ export const RightMenu = styled.aside`
   position: sticky;
   top: 10%;
   height: 100%;
+  @media (max-width: 767px) {
+    width: inherit;
+  }
   @media (max-width: 480px) {
     display: none;
   }

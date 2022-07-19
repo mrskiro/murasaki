@@ -4,7 +4,7 @@ import { Meta } from "@/shared/lib/meta"
 import { NextPageWithLayout } from "@/pages/_app"
 import { findPostDetailBySlug, findPosts } from "@/shared/features/post/api"
 import { PostDetail } from "@/shared/features/post/components/PostDetail"
-import { Sections } from "@/shared/features/post/components/Sections"
+import { TableOfContents } from "@/shared/features/post/components/TableOfContents"
 import * as PostTypes from "@/shared/features/post/types"
 import { ThreeColumn } from "@/shared/layouts/ThreeColumn"
 
@@ -44,16 +44,7 @@ const Page: NextPageWithLayout<Props> = (props) => {
   if (router.isFallback) {
     return <p>loading...</p>
   }
-  return (
-    <div>
-      <Meta title={props.postDetail.title.plainText} ogType="article" />
-      <PostDetail postDetail={props.postDetail} />
-    </div>
-  )
-}
-
-Page.getLayout = (page) => {
-  const headings = page.props.postDetail.blocks.filter((v) => {
+  const headings = props.postDetail.blocks.filter((v) => {
     switch (v.type) {
       case "heading1":
       case "heading2":
@@ -64,9 +55,30 @@ Page.getLayout = (page) => {
     }
   })
   return (
-    <ThreeColumn renderRight={() => <Sections headings={headings} />}>
-      {page}
-    </ThreeColumn>
+    <>
+      <Meta title={props.postDetail.title.plainText} ogType="article" />
+      <ThreeColumn renderRight={() => <TableOfContents headings={headings} />}>
+        <PostDetail postDetail={props.postDetail} />
+      </ThreeColumn>
+    </>
   )
 }
+
+// Page.getLayout = (page) => {
+//   const headings = page.props.postDetail.blocks.filter((v) => {
+//     switch (v.type) {
+//       case "heading1":
+//       case "heading2":
+//       case "heading3":
+//         return true
+//       default:
+//         return false
+//     }
+//   })
+//   return (
+//     <ThreeColumn renderRight={() => <TableOfContents headings={headings} />}>
+//       {page}
+//     </ThreeColumn>
+//   )
+// }
 export default Page

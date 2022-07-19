@@ -7,7 +7,7 @@ type Props = {
   headings: Block[]
 }
 
-export const Sections = (props: Props) => {
+export const TableOfContents = (props: Props) => {
   const [activeId, setActiveId] = React.useState<string>("")
   const observerRef = React.useRef<IntersectionObserver>()
   React.useEffect(() => {
