@@ -10,13 +10,18 @@ type Props = {
 export const Heading = (props: Props) => {
   const H = elementMap[props.as]
   if (!H) return null
-  return <H>{props.text[0]?.plainText}</H>
+  return (
+    <H id={encodeURIComponent(props.text[0]?.plainText || "")}>
+      {props.text[0]?.plainText}
+    </H>
+  )
 }
 
 const base = css`
   font-weight: bold;
   margin-top: 24px;
   margin-bottom: 12px;
+  scroll-margin-top: 16px;
 `
 const H1 = styled.h1`
   ${base};

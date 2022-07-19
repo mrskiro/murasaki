@@ -5,6 +5,8 @@ import { parseByURL } from "@/shared/lib/parser/rss"
 import { findPosts } from "@/shared/features/post/api"
 import { Posts } from "@/shared/features/post/components/Posts"
 import { Post } from "@/shared/features/post/types/post"
+import { TwoColumn } from "@/shared/layouts/TwoColumn"
+import { NextPageWithLayout } from "./_app"
 
 type Props = {
   posts: Post[]
@@ -43,7 +45,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   }
 }
 
-const Page: NextPage<Props> = (props) => {
+const Page: NextPageWithLayout<Props> = (props) => {
   return (
     <>
       <Meta
@@ -55,5 +57,7 @@ const Page: NextPage<Props> = (props) => {
     </>
   )
 }
-
+Page.getLayout = (page) => {
+  return <TwoColumn>{page}</TwoColumn>
+}
 export default Page

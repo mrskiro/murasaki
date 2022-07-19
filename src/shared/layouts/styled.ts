@@ -1,7 +1,8 @@
 import styled from "styled-components"
 
 export const Wrap = styled.div`
-  font-family: "Noto Sans JP";
+  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans", Meiryo, sans-serif;
   position: relative;
   min-height: 100vh;
   padding: 10% 10% 0px;
@@ -13,7 +14,7 @@ export const Wrap = styled.div`
   }
 `
 
-export const ThreeColumn = styled.div`
+export const TwoColumn = styled.div`
   display: flex;
   justify-content: space-between;
   gap: 16px;
@@ -22,10 +23,16 @@ export const ThreeColumn = styled.div`
   }
 `
 
-export const Header = styled.header`
+export const ThreeColumn = styled.div`
   display: flex;
-  flex-direction: column;
-  gap: 2px;
+  justify-content: space-between;
+  gap: 24px;
+  @media (max-width: 480px) {
+    flex-direction: column;
+  }
+`
+
+export const LeftMenu = styled.div`
   flex: 1;
   @media (min-width: 480px) {
     position: sticky;
@@ -35,38 +42,23 @@ export const Header = styled.header`
 `
 
 export const Main = styled.main`
-  flex: 4;
+  flex: 6;
 `
 
 export const RightMenu = styled.aside`
-  flex: 1;
-`
-
-export const H1 = styled.h1`
-  font-size: 20px;
+  width: 180px;
+  position: sticky;
+  top: 10%;
+  height: 100%;
+  @media (max-width: 480px) {
+    display: none;
+  }
 `
 
 export const Hr = styled.hr`
   margin-top: 48px;
   margin-bottom: 16px;
   border-top: 1px solid #edf2f7;
-`
-
-export const Footer = styled.footer`
-  padding-bottom: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`
-
-export const FooterDetail = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 16px;
-`
-
-export const Small = styled.small`
-  font-size: 12px;
 `
 
 export const SwitcherWrap = styled.div`

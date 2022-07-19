@@ -1,9 +1,12 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from "next"
 import { useRouter } from "next/router"
 import { Meta } from "@/shared/lib/meta"
+import { NextPageWithLayout } from "@/pages/_app"
 import { findPostDetailBySlug, findPosts } from "@/shared/features/post/api"
 import { PostDetail } from "@/shared/features/post/components/PostDetail"
+import { Sections } from "@/shared/features/post/components/Sections"
 import * as PostTypes from "@/shared/features/post/types"
+import { ThreeColumn } from "@/shared/layouts/ThreeColumn"
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = await findPosts()
@@ -36,7 +39,7 @@ export const getStaticProps: GetStaticProps<Props, { param: string }> = async (
   }
 }
 
-const Page: NextPage<Props> = (props) => {
+const Page: NextPageWithLayout<Props> = (props) => {
   const router = useRouter()
   if (router.isFallback) {
     return <p>loading...</p>
@@ -49,4 +52,21 @@ const Page: NextPage<Props> = (props) => {
   )
 }
 
+Page.getLayout = (page) => {
+  const headings = page.props.postDetail.blocks.filter((v) => {
+    switch (v.type) {
+      case "heading1":
+      case "heading2":
+      case "heading3":
+        return true
+      default:
+        return false
+    }
+  })
+  return (
+    <ThreeColumn renderRight={() => <Sections headings={headings} />}>
+      {page}
+    </ThreeColumn>
+  )
+}
 export default Page
