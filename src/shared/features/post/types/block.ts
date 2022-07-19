@@ -98,6 +98,7 @@ export type BulletedListItemBlock = {
 
 export type ImageBlock = {
   type: typeof BlockType["image"]
+  richText: RichText[]
   url: string
 }
 

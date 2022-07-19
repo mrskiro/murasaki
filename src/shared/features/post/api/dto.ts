@@ -84,6 +84,7 @@ export const toBlockFromNotion = (v: BlockObj): Block => {
         ...base,
         type: "image",
         url: v.image.file.url,
+        richText: [],
       }
     default:
       // TODO: 未対応
