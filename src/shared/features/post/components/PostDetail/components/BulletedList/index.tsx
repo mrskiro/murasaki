@@ -12,12 +12,14 @@ export const BulletedList = (props: Props) => (
       <Ul key={b.id}>
         {b.richText.map((v) => (
           <Li key={v.plainText}>
-            {v.href !== null && (
+            {v.href === null ? (
+              v.plainText
+            ) : (
               <AppLink isExternal href={v.href}>
                 {v.plainText}
               </AppLink>
             )}
-            {!!b.hasChildren && <BulletedList blocks={b.children} />}
+            {b.hasChildren && <BulletedList blocks={b.children} />}
           </Li>
         ))}
       </Ul>
