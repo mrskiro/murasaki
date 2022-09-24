@@ -2,18 +2,21 @@ import * as React from "react"
 import * as S from "styled-components"
 import { darkTheme, ligthTheme } from "./theme"
 
-const Context = React.createContext({ isDark: false, onToggle: () => {} })
+const Context = React.createContext<{ isDark: boolean; onToggle: () => void }>({
+  isDark: false,
+  onToggle: () => {},
+})
 
 const STORAGE_KEY = "murasak1.com_theme_is_dark"
 
 export const ThemeProvider = (props: React.PropsWithChildren) => {
   const [isDark, setIsDark] = React.useState<boolean>(false)
-  const onToggle = () => {
+  const onToggle = React.useCallback(() => {
     setIsDark((v) => {
       window.localStorage.setItem(STORAGE_KEY, !v ? "true" : "false")
       return !v
     })
-  }
+  }, [])
 
   React.useEffect(() => {
     const value = window.localStorage.getItem(STORAGE_KEY)
@@ -23,10 +26,12 @@ export const ThemeProvider = (props: React.PropsWithChildren) => {
         return
       }
     }
-    setIsDark(value === "true" ? true : false)
+    setIsDark(value === "true")
   }, [])
 
   return (
+    // TODO
+    // eslint-disable-next-line react/jsx-no-constructed-context-values
     <Context.Provider value={{ isDark, onToggle }}>
       <S.ThemeProvider theme={isDark ? darkTheme : ligthTheme}>
         {props.children}

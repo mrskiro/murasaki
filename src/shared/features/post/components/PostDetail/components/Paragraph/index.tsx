@@ -6,37 +6,35 @@ type Props = {
   text: RichText[]
 }
 
-export const Paragraph = (props: Props) => {
-  return (
-    <P>
-      {props.text.map((v, i) => {
-        if (isUsedAnythingAnnotations(v.annotations)) {
-          const Wrap = v.annotations.code ? Code : Span
+export const Paragraph = (props: Props) => (
+  <P>
+    {props.text.map((v, i) => {
+      if (isUsedAnythingAnnotations(v.annotations)) {
+        const Wrap = v.annotations.code ? Code : Span
 
-          if (!v.href)
-            return (
-              <Wrap key={i} $annotations={v.annotations}>
-                {v.plainText}
-              </Wrap>
-            )
-
+        if (!v.href)
           return (
-            <AppLink isExternal href={v.href} key={i}>
-              <Wrap $annotations={v.annotations}>{v.plainText}</Wrap>
-            </AppLink>
+            <Wrap key={i} $annotations={v.annotations}>
+              {v.plainText}
+            </Wrap>
           )
-        }
 
-        if (!v.href) return v.plainText
         return (
           <AppLink isExternal href={v.href} key={i}>
-            {v.plainText}
+            <Wrap $annotations={v.annotations}>{v.plainText}</Wrap>
           </AppLink>
         )
-      })}
-    </P>
-  )
-}
+      }
+
+      if (!v.href) return v.plainText
+      return (
+        <AppLink isExternal href={v.href} key={i}>
+          {v.plainText}
+        </AppLink>
+      )
+    })}
+  </P>
+)
 
 const isUsedAnythingAnnotations = (annotations: Annotations): boolean => {
   const { color, ...rest } = annotations

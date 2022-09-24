@@ -1,4 +1,4 @@
-import { GetStaticPaths, GetStaticProps, NextPage } from "next"
+import { GetStaticPaths, GetStaticProps } from "next"
 import { useRouter } from "next/router"
 import { Meta } from "@/shared/lib/meta"
 import { NextPageWithLayout } from "@/pages/_app"

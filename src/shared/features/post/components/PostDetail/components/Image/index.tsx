@@ -6,18 +6,17 @@ type Props = {
   alt: string
 }
 
-export const Image = (props: Props) => {
-  return (
-    <Wrap>
-      <NextImage
-        layout="fill"
-        objectFit="contain"
-        alt={props.alt}
-        src={props.src}
-      />
-    </Wrap>
-  )
-}
+export const Image = (props: Props) => (
+  <Wrap>
+    <NextImage
+      layout="fill"
+      objectFit="contain"
+      alt={props.alt}
+      src={props.src}
+    />
+  </Wrap>
+)
+
 // https://techlab.q-co.jp/articles/43/
 const Wrap = styled.div`
   position: relative;

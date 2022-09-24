@@ -15,12 +15,14 @@ export const AppLink = (props: PropsWithChildren<Props>) => {
   if (props.isExternal) {
     const { children, ...anchorProps } = props
     return (
+      // eslint-disable-next-line react/jsx-props-no-spreading
       <S.A {...anchorProps} target="_blank">
-        {props.children}
+        {children}
       </S.A>
     )
   }
   return (
+    // eslint-disable-next-line react/jsx-props-no-spreading
     <Link {...props} passHref>
       <S.Nav isActive={props.isActive || false}>{props.children}</S.Nav>
     </Link>

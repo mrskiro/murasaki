@@ -11,7 +11,7 @@ type Props = {
   postDetail: Types.PostDetail
 }
 
-export const PostDetail = (props: Props) => {
+export const PostDetail = (props: Props) => (
   // TODO: これだと再帰できないのでどうするか考える
   // 現状ulとliが1-1でも問題ない
 
@@ -29,27 +29,25 @@ export const PostDetail = (props: Props) => {
   //   ]
   // }, [])
 
-  return (
-    <S.Wrap>
-      <S.MetaWrap>
-        <S.Title>{props.postDetail.title.plainText}</S.Title>
-        <S.MetaDetailWrap>
-          <div></div>
-          <div>
-            <S.DateLabel>{`${format(props.postDetail.createdAt)}`}</S.DateLabel>
-            {format(props.postDetail.updatedAt) !==
-              format(props.postDetail.createdAt) && (
-              <S.DateLabel>{`最終更新：${format(
-                props.postDetail.updatedAt
-              )}`}</S.DateLabel>
-            )}
-          </div>
-        </S.MetaDetailWrap>
-      </S.MetaWrap>
-      {props.postDetail.blocks.map(renderBlock)}
-    </S.Wrap>
-  )
-}
+  <S.Wrap>
+    <S.MetaWrap>
+      <S.Title>{props.postDetail.title.plainText}</S.Title>
+      <S.MetaDetailWrap>
+        <div />
+        <div>
+          <S.DateLabel>{`${format(props.postDetail.createdAt)}`}</S.DateLabel>
+          {format(props.postDetail.updatedAt) !==
+            format(props.postDetail.createdAt) && (
+            <S.DateLabel>{`最終更新：${format(
+              props.postDetail.updatedAt
+            )}`}</S.DateLabel>
+          )}
+        </div>
+      </S.MetaDetailWrap>
+    </S.MetaWrap>
+    {props.postDetail.blocks.map(renderBlock)}
+  </S.Wrap>
+)
 
 const renderBlock = (v: Types.Block) => {
   switch (v.type) {

@@ -6,28 +6,24 @@ type Props = {
   blocks: Block[]
 }
 
-export const BulletedList = (props: Props) => {
-  return (
-    <>
-      {props.blocks.map((b) => (
-        <Ul key={b.id}>
-          {b.richText.map((v) => (
-            <Li key={v.plainText}>
-              {v.href ? (
-                <AppLink isExternal href={v.href}>
-                  {v.plainText}
-                </AppLink>
-              ) : (
-                v.plainText
-              )}
-              {b.hasChildren && <BulletedList blocks={b.children} />}
-            </Li>
-          ))}
-        </Ul>
-      ))}
-    </>
-  )
-}
+export const BulletedList = (props: Props) => (
+  <>
+    {props.blocks.map((b) => (
+      <Ul key={b.id}>
+        {b.richText.map((v) => (
+          <Li key={v.plainText}>
+            {v.href !== null && (
+              <AppLink isExternal href={v.href}>
+                {v.plainText}
+              </AppLink>
+            )}
+            {!!b.hasChildren && <BulletedList blocks={b.children} />}
+          </Li>
+        ))}
+      </Ul>
+    ))}
+  </>
+)
 
 const Ul = styled.ul`
   list-style: inherit;

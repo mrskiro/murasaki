@@ -89,8 +89,7 @@ export const toBlockFromNotion = (v: BlockObj): Block => {
     default:
       // TODO: 未対応
 
-      // @ts-ignore
-      return {}
+      return {} as Block
     // throw new Error(`invalid block type: ${type}`)
   }
 }

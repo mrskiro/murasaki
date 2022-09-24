@@ -4,7 +4,7 @@ import Script from "next/script"
 
 const GOOGLE_ANALYTICS_ID = "G-HRSTN8HFJC"
 
-//　必要になったら
+// 必要になったら
 
 // type EventArgs = {
 //   action: string
@@ -40,18 +40,17 @@ export const usePegeView = () => {
   }, [router.events])
 }
 
-export const GoogleAnalytics = () => {
-  return (
-    <>
-      <Script
-        strategy="afterInteractive"
-        src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ANALYTICS_ID}`}
-      />
-      <Script
-        id="gtag-init"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
+export const GoogleAnalytics = () => (
+  <>
+    <Script
+      strategy="afterInteractive"
+      src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ANALYTICS_ID}`}
+    />
+    <Script
+      id="gtag-init"
+      strategy="afterInteractive"
+      dangerouslySetInnerHTML={{
+        __html: `
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
@@ -59,8 +58,7 @@ export const GoogleAnalytics = () => {
               page_path: window.location.pathname,
             });
           `,
-        }}
-      />
-    </>
-  )
-}
+      }}
+    />
+  </>
+)

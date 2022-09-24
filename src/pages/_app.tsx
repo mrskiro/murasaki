@@ -13,16 +13,18 @@ type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout
 }
 
-const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
+const MyApp = (props: AppPropsWithLayout) => {
   usePegeView()
 
-  const getLayout = Component.getLayout ?? ((page) => page)
+  const getLayout = props.Component.getLayout ?? ((page) => page)
 
   return (
     <>
       <GoogleAnalytics />
       <ResetStyle />
-      <ThemeProvider>{getLayout(<Component {...pageProps} />)}</ThemeProvider>
+      <ThemeProvider>
+        {getLayout(<props.Component {...props.pageProps} />)}
+      </ThemeProvider>
     </>
   )
 }

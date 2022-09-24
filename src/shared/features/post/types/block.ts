@@ -1,7 +1,7 @@
 type Heading<
   T extends number[],
   I extends unknown[] = [],
-  R extends Record<string, string> = {}
+  R extends Record<string, string> = Record<never, never>
 > = T["length"] extends 0
   ? never
   : I["length"] extends T["length"]
@@ -130,7 +130,7 @@ type TextRichText = {
 type MentionRichText = {
   type: "mention"
   // todo
-  mention: {}
+  mention: Record<never, never>
 }
 
 type EquationRichText = {

@@ -8,22 +8,20 @@ type Props = {
   renderRight: () => ReactNode
 }
 
-export const ThreeColumn = (props: PropsWithChildren<Props>) => {
-  return (
-    <S.Wrap>
-      <S.SwitcherWrap>
-        <Switcher></Switcher>
-      </S.SwitcherWrap>
-      <S.ThreeColumn>
-        <S.LeftMenu>
-          <Header />
-        </S.LeftMenu>
+export const ThreeColumn = (props: PropsWithChildren<Props>) => (
+  <S.Wrap>
+    <S.SwitcherWrap>
+      <Switcher />
+    </S.SwitcherWrap>
+    <S.ThreeColumn>
+      <S.LeftMenu>
+        <Header />
+      </S.LeftMenu>
 
-        <S.Main>{props.children}</S.Main>
-        <S.RightMenu>{props.renderRight()}</S.RightMenu>
-      </S.ThreeColumn>
-      <S.Hr />
-      <Footer />
-    </S.Wrap>
-  )
-}
+      <S.Main>{props.children}</S.Main>
+      <S.RightMenu>{props.renderRight()}</S.RightMenu>
+    </S.ThreeColumn>
+    <S.Hr />
+    <Footer />
+  </S.Wrap>
+)

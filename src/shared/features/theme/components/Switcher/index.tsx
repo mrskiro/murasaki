@@ -18,7 +18,7 @@ export const Switcher = () => {
     setIsAnimated(true)
     onToggle()
 
-    let interval = setInterval(() => {
+    const interval = setInterval(() => {
       clicked.current = false
       clearInterval(interval)
       setIsAnimated(false)

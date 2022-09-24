@@ -1,4 +1,4 @@
-import type { GetStaticProps, NextPage } from "next"
+import type { GetStaticProps } from "next"
 import { load } from "@/shared/lib/config"
 import { Meta } from "@/shared/lib/meta"
 import { parseByURL } from "@/shared/lib/parser/rss"
@@ -18,17 +18,15 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   const zennFeed = await parseByURL(config.ZENN_URL)
 
   const postsFromFeed: Post[] = [...qiitaFeed.items, ...zennFeed.items].map(
-    (v) => {
-      return {
-        id: v.title || "",
-        type: "external",
-        title: v.title || "",
-        content: v.content || "",
-        link: v.link || "",
-        createdAt: v.isoDate || "",
-        updatedAt: v.isoDate || "",
-      }
-    }
+    (v) => ({
+      id: v.title || "",
+      type: "external",
+      title: v.title || "",
+      content: v.content || "",
+      link: v.link || "",
+      createdAt: v.isoDate || "",
+      updatedAt: v.isoDate || "",
+    })
   )
 
   const postsFromNotion = await findPosts()
@@ -45,19 +43,15 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   }
 }
 
-const Page: NextPageWithLayout<Props> = (props) => {
-  return (
-    <>
-      <Meta
-        title="🟣🟣🟪🟪"
-        description="むらさきのブログです。"
-        ogType="website"
-      />
-      <Posts posts={props.posts} />
-    </>
-  )
-}
-Page.getLayout = (page) => {
-  return <TwoColumn>{page}</TwoColumn>
-}
+const Page: NextPageWithLayout<Props> = (props) => (
+  <>
+    <Meta
+      title="🟣🟣🟪🟪"
+      description="むらさきのブログです。"
+      ogType="website"
+    />
+    <Posts posts={props.posts} />
+  </>
+)
+Page.getLayout = (page) => <TwoColumn>{page}</TwoColumn>
 export default Page
