@@ -1,3 +1,4 @@
+import React from "react"
 import styled from "styled-components"
 import { AppLink } from "@/shared/components/AppLink"
 import { Block } from "@/shared/features/post/types"
@@ -10,18 +11,20 @@ export const BulletedList = (props: Props) => (
   <>
     {props.blocks.map((b) => (
       <Ul key={b.id}>
-        {b.richText.map((v) => (
-          <Li key={v.plainText}>
-            {v.href === null ? (
-              v.plainText
-            ) : (
-              <AppLink isExternal href={v.href}>
-                {v.plainText}
-              </AppLink>
-            )}
-            {b.hasChildren && <BulletedList blocks={b.children} />}
-          </Li>
-        ))}
+        <Li>
+          {b.richText.map((v) => (
+            <React.Fragment key={v.plainText}>
+              {v.href === null ? (
+                v.plainText
+              ) : (
+                <AppLink isExternal href={v.href}>
+                  {v.plainText}
+                </AppLink>
+              )}
+            </React.Fragment>
+          ))}
+          {b.hasChildren && <BulletedList blocks={b.children} />}
+        </Li>
       </Ul>
     ))}
   </>
