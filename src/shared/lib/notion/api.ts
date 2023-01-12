@@ -68,9 +68,21 @@ export const findMetaById = async (id: string): Promise<PageObj> => {
   return res
 }
 
-export const findPageBlocksById = async (id: string): Promise<BlockObj[]> => {
+export const findPageBlocksById = async (
+  id: string,
+  startCursor?: string
+): Promise<BlockObj[]> => {
+  const results: BlockObj[] = []
   const res = await client.blocks.children.list({
     block_id: id,
+    start_cursor: startCursor,
   })
-  return res.results as BlockObj[]
+  results.push(...(res.results as BlockObj[]))
+  if (res.has_more) {
+    if (res.next_cursor) {
+      const more = await findPageBlocksById(id, res.next_cursor)
+      results.push(...more)
+    }
+  }
+  return results
 }
