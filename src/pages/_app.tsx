@@ -1,5 +1,6 @@
 import { NextPage } from "next"
 import * as React from "react"
+import { isPrd } from "@/shared/lib/environment"
 import { GoogleAnalytics, usePegeView } from "@/shared/lib/log"
 import { ResetStyle } from "@/shared/lib/style/resetStyle"
 import { ThemeProvider } from "@/shared/features/theme/Context"
@@ -20,7 +21,7 @@ const MyApp = (props: AppPropsWithLayout) => {
 
   return (
     <>
-      <GoogleAnalytics />
+      {isPrd() && <GoogleAnalytics />}
       <ResetStyle />
       <ThemeProvider>
         {getLayout(<props.Component {...props.pageProps} />)}
