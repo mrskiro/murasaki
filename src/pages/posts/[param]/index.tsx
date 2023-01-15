@@ -1,5 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from "next"
 import { useRouter } from "next/router"
+import { BmcButton } from "@/shared/lib/bmc"
 import { Meta } from "@/shared/lib/meta"
 import { NextPageWithLayout } from "@/pages/_app"
 import { findPostDetailBySlug, findPosts } from "@/shared/features/post/api"
@@ -59,6 +60,7 @@ const Page: NextPageWithLayout<Props> = (props) => {
       <Meta title={props.postDetail.title.plainText} ogType="article" />
       <ThreeColumn renderRight={() => <TableOfContents headings={headings} />}>
         <PostDetail postDetail={props.postDetail} />
+        <BmcButton />
       </ThreeColumn>
     </>
   )
