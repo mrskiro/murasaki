@@ -10,7 +10,7 @@ const Context = React.createContext<{ isDark: boolean; onToggle: () => void }>({
 const STORAGE_KEY = "murasak1.com_theme_is_dark"
 
 export const ThemeProvider = (props: React.PropsWithChildren) => {
-  const [isDark, setIsDark] = React.useState<boolean>(false)
+  const [isDark, setIsDark] = React.useState<boolean | null>(null)
   const onToggle = React.useCallback(() => {
     setIsDark((v) => {
       window.localStorage.setItem(STORAGE_KEY, !v ? "true" : "false")
@@ -29,6 +29,9 @@ export const ThemeProvider = (props: React.PropsWithChildren) => {
     setIsDark(value === "true")
   }, [])
 
+  if (isDark === null) {
+    return null
+  }
   return (
     // TODO
     // eslint-disable-next-line react/jsx-no-constructed-context-values
