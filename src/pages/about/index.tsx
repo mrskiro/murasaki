@@ -41,7 +41,11 @@ const Page: NextPageWithLayout<Props> = (props) => {
   })
   return (
     <>
-      <Meta title="About" ogType="article" />
+      <Meta
+        title="About"
+        ogType="article"
+        description="むらさきの自己紹介です。"
+      />
       <ThreeColumn renderRight={() => <TableOfContents headings={headings} />}>
         <PostDetail postDetail={props.aboutPageDetail} />
       </ThreeColumn>
