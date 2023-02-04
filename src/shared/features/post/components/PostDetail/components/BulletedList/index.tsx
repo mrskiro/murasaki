@@ -32,7 +32,7 @@ export const BulletedList = (props: Props) => (
 
 const Ul = styled.ul`
   list-style: inherit;
-  list-style-position: inside;
+  padding-left: 16px;
   margin-bottom: 2px;
 `
 
