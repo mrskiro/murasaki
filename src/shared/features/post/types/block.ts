@@ -113,6 +113,7 @@ export type ImageBlock = {
   type: typeof BlockType["image"]
   // TODO: delete
   richText: RichText[]
+  caption: RichText[]
   url: string
 }
 

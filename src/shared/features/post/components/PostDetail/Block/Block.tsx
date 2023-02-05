@@ -74,7 +74,12 @@ export const Block = (props: Props) => {
         <Code text={props.block.richText} language={props.block.language} />
       )
     case "image":
-      return <Image src={props.block.url} alt="" />
+      return (
+        <Image
+          src={props.block.url}
+          alt={props.block.caption[0]?.plainText ?? "画像"}
+        />
+      )
     default:
       return null
   }

@@ -177,6 +177,7 @@ const blocksFrom = (blocks: BlockObject[]): Block[] => {
               url: block.image.file.url,
               // TODO
               richText: [],
+              caption: richTextsFrom(block.image.caption),
             })
           }
         }
