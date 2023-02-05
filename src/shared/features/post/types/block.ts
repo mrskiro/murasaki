@@ -55,16 +55,19 @@ const BlockType = {
 
 type BlockType = typeof BlockType[keyof typeof BlockType]
 
-export type Block = {
-  id: string
-} & Children &
+export type Block = BlockBase &
   (
     | HeadingBlock
     | ParagraphBlock
     | CodeBlock
     | BulletedListItemBlock
+    | NumberedListBlock
     | ImageBlock
   )
+
+export type BlockBase = {
+  id: string
+} & Children
 
 type Children = {
   hasChildren: boolean
@@ -96,8 +99,21 @@ export type BulletedListItemBlock = {
   color: string
 }
 
+export type NumberedListBlock = {
+  type: typeof BlockType["numberedListItem"]
+  // TODO: delete
+  richText: RichText[]
+  items: NumberedListItem[]
+}
+
+type NumberedListItem = {
+  richText: RichText[]
+  color: string
+}
+
 export type ImageBlock = {
   type: typeof BlockType["image"]
+  // TODO: delete
   richText: RichText[]
   url: string
 }
