@@ -1,10 +1,11 @@
 import * as React from "react"
 import styled, { css } from "styled-components"
-import { RichText } from "@/shared/features/post/types"
+import * as Types from "@/shared/features/post/types"
+import { RichText } from "../RichText"
 
 type Props = {
   as: As
-  text: RichText[]
+  text: Types.RichText[]
 }
 
 export const Heading = (props: Props) => {
@@ -12,7 +13,7 @@ export const Heading = (props: Props) => {
   if (!H) return null
   return (
     <H id={encodeURIComponent(props.text[0]?.plainText || "")}>
-      {props.text[0]?.plainText}
+      <RichText text={props.text} />
     </H>
   )
 }

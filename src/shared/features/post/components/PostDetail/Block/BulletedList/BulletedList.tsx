@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
-import { AppLink } from "@/shared/components/AppLink"
 import { Block } from "@/shared/features/post/types"
+import { RichText } from "../RichText"
 
 type Props = {
   blocks: Block[]
@@ -13,17 +13,7 @@ export const BulletedList = (props: Props) => {
       {props.blocks.map((b) => (
         <Ul key={b.id}>
           <Li>
-            {b.richText.map((v) => (
-              <React.Fragment key={v.plainText}>
-                {v.href === null ? (
-                  v.plainText
-                ) : (
-                  <AppLink isExternal href={v.href}>
-                    {v.plainText}
-                  </AppLink>
-                )}
-              </React.Fragment>
-            ))}
+            <RichText text={b.richText} />
             {b.hasChildren && <BulletedList blocks={b.children} />}
           </Li>
         </Ul>
