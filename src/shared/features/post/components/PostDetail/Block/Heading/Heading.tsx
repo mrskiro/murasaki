@@ -6,6 +6,7 @@ import { RichText } from "../RichText"
 type Props = {
   as: As
   text: Types.RichText[]
+  children?: React.ReactNode
 }
 
 export const Heading = (props: Props) => {
@@ -14,6 +15,7 @@ export const Heading = (props: Props) => {
   return (
     <H id={encodeURIComponent(props.text[0]?.plainText || "")}>
       <RichText text={props.text} />
+      {props.children}
     </H>
   )
 }

@@ -1,35 +1,26 @@
 import React from "react"
 import styled from "styled-components"
-import { Block } from "@/shared/features/post/types"
+import { BulletedListItemBlock } from "@/shared/features/post/types"
 import { RichText } from "../RichText"
 
 type Props = {
-  blocks: Block[]
+  block: BulletedListItemBlock
+  children?: React.ReactNode
 }
 
 export const BulletedList = (props: Props) => {
   return (
-    <>
-      {props.blocks.map((b) => (
-        <Ul key={b.id}>
-          <Li>
-            <RichText text={b.richText} />
-            {b.hasChildren && <BulletedList blocks={b.children} />}
-          </Li>
-        </Ul>
-      ))}
-    </>
+    <Ul>
+      <li>
+        <RichText text={props.block.richText} />
+        {props.children}
+      </li>
+    </Ul>
   )
 }
 
 const Ul = styled.ul`
   list-style: inherit;
-  padding-left: 16px;
+  list-style-position: inside;
   margin-bottom: 2px;
-`
-
-const Li = styled.li`
-  & > ul {
-    padding-left: 24px;
-  }
 `

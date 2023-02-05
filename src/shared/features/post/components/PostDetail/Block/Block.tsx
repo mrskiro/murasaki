@@ -1,3 +1,5 @@
+import React from "react"
+import styled from "styled-components"
 import * as Types from "@/shared/features/post/types"
 import { gropingBlocks } from "@/shared/features/post/utils"
 import { BulletedList } from "./BulletedList"
@@ -13,17 +15,46 @@ type Props = {
 }
 
 export const Block = (props: Props) => {
+  const renderChildren = () => {
+    if (!props.block.hasChildren) {
+      return null
+    }
+    return (
+      <ChildrenBlockWrap>
+        {props.block.children.map((v) => (
+          <Block key={v.id} block={v} blockMap={props.blockMap} />
+        ))}
+      </ChildrenBlockWrap>
+    )
+  }
   switch (props.block.type) {
-    case "heading1":
-      return <Heading as="h1" text={props.block.richText} />
+    case "heading1": {
+      return (
+        <Heading as="h1" text={props.block.richText}>
+          {renderChildren()}
+        </Heading>
+      )
+    }
     case "heading2":
-      return <Heading as="h2" text={props.block.richText} />
+      return (
+        <Heading as="h2" text={props.block.richText}>
+          {renderChildren()}
+        </Heading>
+      )
     case "heading3":
-      return <Heading as="h3" text={props.block.richText} />
+      return (
+        <Heading as="h3" text={props.block.richText}>
+          {renderChildren()}
+        </Heading>
+      )
     case "paragraph":
-      return <Paragraph text={props.block.richText} />
+      return (
+        <Paragraph block={props.block} blockMap={props.blockMap}>
+          {renderChildren()}
+        </Paragraph>
+      )
     case "bulletedListItem":
-      return <BulletedList blocks={[props.block]} />
+      return <BulletedList block={props.block}>{renderChildren()}</BulletedList>
     case "numberedListItem": {
       const blocks = Object.values(props.blockMap)
       const groups: string[][] = [
@@ -33,11 +64,9 @@ export const Block = (props: Props) => {
       const group = groups.find((v) => v.includes(props.block.id))
       const start = (group?.findIndex((v) => v === props.block.id) ?? 0) + 1
       return (
-        <NumberedList
-          block={props.block}
-          blockMap={props.blockMap}
-          start={start}
-        />
+        <NumberedList block={props.block} start={start}>
+          {renderChildren()}
+        </NumberedList>
       )
     }
     case "code":
@@ -50,3 +79,7 @@ export const Block = (props: Props) => {
       return null
   }
 }
+
+const ChildrenBlockWrap = styled.div`
+  padding-inline-start: 24px;
+`

@@ -102,7 +102,7 @@ export type BulletedListItemBlock = {
   color: string
 }
 
-export type NumberedListBlock = BlockBase & {
+export type NumberedListBlock = {
   type: typeof BlockType["numberedListItem"]
   // TODO: delete
   richText: RichText[]
