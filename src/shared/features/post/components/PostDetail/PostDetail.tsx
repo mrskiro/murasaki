@@ -1,7 +1,7 @@
 import { format } from "@/shared/lib/date"
 import * as Types from "@/shared/features/post/types"
 import { toBlockMap } from "../../utils"
-import { Block } from "./components/Block"
+import { Block } from "./Block"
 import * as S from "./styled"
 
 type Props = {

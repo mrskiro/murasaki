@@ -1,15 +1,15 @@
-import { Block as BlockType, BlockMap } from "@/shared/features/post/types"
+import * as Types from "@/shared/features/post/types"
 import { gropingBlocks } from "@/shared/features/post/utils"
-import { BulletedList } from "../BulletedList"
-import { Code } from "../Code"
-import { Heading } from "../Heading"
-import { Image } from "../Image"
-import { Paragraph } from "../Paragraph"
+import { BulletedList } from "./BulletedList"
+import { Code } from "./Code"
+import { Heading } from "./Heading"
+import { Image } from "./Image"
 import { NumberedList } from "./NumberedList"
+import { Paragraph } from "./Paragraph"
 
 type Props = {
-  block: BlockType
-  blockMap: BlockMap
+  block: Types.Block
+  blockMap: Types.BlockMap
 }
 
 export const Block = (props: Props) => {
