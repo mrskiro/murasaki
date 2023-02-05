@@ -55,6 +55,8 @@ const BlockType = {
 
 type BlockType = typeof BlockType[keyof typeof BlockType]
 
+export type BlockMap = Record<Block["id"], Block>
+
 export type Block = BlockBase &
   (
     | HeadingBlock
@@ -67,6 +69,7 @@ export type Block = BlockBase &
 
 export type BlockBase = {
   id: string
+  parentId: string | null
 } & Children
 
 type Children = {
@@ -99,14 +102,9 @@ export type BulletedListItemBlock = {
   color: string
 }
 
-export type NumberedListBlock = {
+export type NumberedListBlock = BlockBase & {
   type: typeof BlockType["numberedListItem"]
   // TODO: delete
-  richText: RichText[]
-  items: NumberedListItem[]
-}
-
-type NumberedListItem = {
   richText: RichText[]
   color: string
 }

@@ -2,6 +2,7 @@ import * as Notion from "@notionhq/client"
 import {
   PageObjectResponse,
   BlockObjectResponse,
+  QueryDatabaseParameters,
 } from "@notionhq/client/build/src/api-endpoints"
 import { load } from "@/shared/lib/config"
 
@@ -15,19 +16,29 @@ const client = new Notion.Client({
 export const findPostsWherePublished = async (): Promise<
   PageObjectResponse[]
 > => {
+  const filters: QueryDatabaseParameters["filter"] = {
+    or: [
+      {
+        type: "checkbox",
+        property: "Published",
+        checkbox: {
+          equals: true,
+        },
+      },
+    ],
+  }
+  if (process.env.NODE_ENV === "development") {
+    filters.or.push({
+      type: "checkbox",
+      property: "Preview",
+      checkbox: {
+        equals: true,
+      },
+    })
+  }
   const res = await client.databases.query({
     database_id: DATABASE_ID,
-    filter: {
-      or: [
-        {
-          type: "checkbox",
-          property: "Published",
-          checkbox: {
-            equals: true,
-          },
-        },
-      ],
-    },
+    filter: filters,
     sorts: [
       {
         property: "CreatedAt",

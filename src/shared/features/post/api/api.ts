@@ -100,45 +100,9 @@ const blocksFrom = (blocks: BlockObject[]): Block[] => {
     }
     const base: BlockBase = {
       id: block.id,
+      parentId: block.parent.type === "block_id" ? block.parent.block_id : null,
       hasChildren: block.has_children,
       children,
-    }
-
-    const isNested = block.type === "numbered_list_item"
-
-    if (isNested) {
-      const richText = richTextsFrom(block.numbered_list_item.rich_text)
-      // 親を探す
-      const maybeParent = results.at(-1)
-      const hasParent = maybeParent?.type === "numberedListItem"
-      // なければ自分が親になる
-      if (!hasParent) {
-        results.push({
-          ...base,
-          type: "numberedListItem",
-          // TODO
-          richText: [],
-          items: [
-            {
-              color: block.numbered_list_item.color,
-              richText,
-            },
-          ],
-        })
-        return
-      }
-      // あれば子供になる
-      results.splice(results.length - 1, 1, {
-        ...base,
-        ...maybeParent,
-        items: [
-          ...maybeParent.items,
-          {
-            color: block.numbered_list_item.color,
-            richText,
-          },
-        ],
-      })
     }
 
     switch (block.type) {
@@ -184,6 +148,15 @@ const blocksFrom = (blocks: BlockObject[]): Block[] => {
           type: "bulletedListItem",
           color: block.bulleted_list_item.color,
           richText: richTextsFrom(block.bulleted_list_item.rich_text),
+        })
+        return
+      }
+      case "numbered_list_item": {
+        results.push({
+          ...base,
+          type: "numberedListItem",
+          color: block.numbered_list_item.color,
+          richText: richTextsFrom(block.numbered_list_item.rich_text),
         })
         return
       }

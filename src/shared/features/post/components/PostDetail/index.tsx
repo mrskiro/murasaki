@@ -1,11 +1,7 @@
 import { format } from "@/shared/lib/date"
 import * as Types from "@/shared/features/post/types"
-import { BulletedList } from "./components/BulletedList"
-import { Code } from "./components/Code"
-import { Heading } from "./components/Heading"
-import { Image } from "./components/Image"
-import { NumberedList } from "./components/NumberedList"
-import { Paragraph } from "./components/Paragraph"
+import { toBlockMap } from "../../utils"
+import { Block } from "./components/Block"
 import * as S from "./styled"
 
 type Props = {
@@ -13,6 +9,8 @@ type Props = {
 }
 
 export const PostDetail = (props: Props) => {
+  const blockMap = toBlockMap(props.postDetail.blocks)
+
   return (
     // TODO: これだと再帰できないのでどうするか考える
     // 現状ulとliが1-1でも問題ない
@@ -47,30 +45,9 @@ export const PostDetail = (props: Props) => {
           </div>
         </S.MetaDetailWrap>
       </S.MetaWrap>
-      {props.postDetail.blocks.map(renderBlock)}
+      {props.postDetail.blocks.map((block) => (
+        <Block key={block.id} block={block} blockMap={blockMap} />
+      ))}
     </S.Wrap>
   )
-}
-
-const renderBlock = (v: Types.Block) => {
-  switch (v.type) {
-    case "heading1":
-      return <Heading key={v.id} as="h1" text={v.richText} />
-    case "heading2":
-      return <Heading key={v.id} as="h2" text={v.richText} />
-    case "heading3":
-      return <Heading key={v.id} as="h3" text={v.richText} />
-    case "paragraph":
-      return <Paragraph key={v.id} text={v.richText} />
-    case "bulletedListItem":
-      return <BulletedList key={v.id} blocks={[v]} />
-    case "numberedListItem":
-      return <NumberedList key={v.id} block={v} />
-    case "code":
-      return <Code key={v.id} text={v.richText} language={v.language} />
-    case "image":
-      return <Image key={v.id} src={v.url} alt="" />
-    default:
-      return null
-  }
 }
