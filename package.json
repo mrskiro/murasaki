@@ -10,7 +10,9 @@
     "lint": "next lint --dir .",
     "lint:fix": "next lint --dir . --fix",
     "type-check": "tsc --noEmit",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "test:e2e": "playwright test",
+    "show-e2e": "playwright show-report"
   },
   "dependencies": {
     "@notionhq/client": "2.2.3",

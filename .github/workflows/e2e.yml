@@ -1,9 +1,9 @@
-name: Playwright Tests
+name: e2e
 on:
   push:
-    branches: [ main, master ]
+    branches: [ main ]
   pull_request:
-    branches: [ main, master ]
+    branches: [ main ]
 jobs:
   test:
     timeout-minutes: 60
@@ -17,8 +17,8 @@ jobs:
       run: yarn
     - name: Install Playwright Browsers
       run: yarn playwright install --with-deps
-    - name: Run Playwright tests
-      run: yarn playwright test
+    - name: Run e2e tests
+      run: yarn test:e2e
     - uses: actions/upload-artifact@v3
       if: always()
       with:
