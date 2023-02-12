@@ -17,7 +17,7 @@ export const MetaDetailWrap = styled.div`
 `
 
 export const Title = styled.h1`
-  font-size: 24px;
+  font-size: 32px;
   font-weight: bold;
 `
 export const DateLabel = styled.p`
