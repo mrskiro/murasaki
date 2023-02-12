@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:e2e": "next dev -p 3333",
     "build": "next build",
     "postbuild": "next-sitemap --config sitemap.config.js",
     "start": "next start",
@@ -12,7 +13,8 @@
     "type-check": "tsc --noEmit",
     "prepare": "husky install",
     "test:e2e": "playwright test",
-    "show-e2e": "playwright show-report"
+    "update-snapshots": "yarn test:e2e --update-snapshots",
+    "e2e-play": "playwright codegen localhost:3000"
   },
   "dependencies": {
     "@notionhq/client": "2.2.3",
