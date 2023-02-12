@@ -76,7 +76,7 @@ export const Block = (props: Props) => {
     case "image":
       return (
         <Image
-          src={props.block.url}
+          id={props.block.id}
           alt={props.block.caption[0]?.plainText ?? "画像"}
         />
       )

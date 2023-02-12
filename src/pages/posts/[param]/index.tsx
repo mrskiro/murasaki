@@ -1,6 +1,7 @@
 import { GetStaticPaths, GetStaticProps } from "next"
 import { useRouter } from "next/router"
 import { BmcButton } from "@/shared/lib/bmc"
+import { toPublic } from "@/shared/lib/image"
 import { Meta } from "@/shared/lib/meta"
 import { NextPageWithLayout } from "@/pages/_app"
 import { findPostDetailBySlug, findPosts } from "@/shared/features/post/api"
@@ -31,6 +32,17 @@ export const getStaticProps: GetStaticProps<Props, { param: string }> = async (
   }
 
   const postDetail = await findPostDetailBySlug(slug)
+
+  const shouldSaveImages = postDetail.blocks.reduce<
+    { id: string; url: string }[]
+  >((p, c) => {
+    if (c.type !== "image") {
+      return p
+    }
+    return [...p, { id: c.id, url: c.url }]
+  }, [])
+
+  toPublic(shouldSaveImages)
 
   return {
     props: {
