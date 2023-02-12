@@ -1,8 +1,9 @@
 import styled from "styled-components"
 import NextImage from "next/image"
+import { generateImagePath } from "@/shared/lib/image"
 
 type Props = {
-  src: string
+  id: string
   alt: string
 }
 
@@ -12,7 +13,7 @@ export const Image = (props: Props) => (
       layout="fill"
       objectFit="contain"
       alt={props.alt}
-      src={props.src}
+      src={`${generateImagePath(props.id).replace("public", "")}`}
     />
   </Wrap>
 )
