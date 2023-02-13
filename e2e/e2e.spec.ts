@@ -14,9 +14,25 @@ test("screen shots", async ({ page }) => {
   })
   await page.goto(`/posts/demo`)
 
-  await scrollToBottom(page)
+  // scroll to bottom
+  await page.evaluate(async () => {
+    const delay = (ms: number) =>
+      new Promise((resolve) => setTimeout(resolve, ms))
+    for (let i = 0; i < document.body.scrollHeight; i += window.innerHeight) {
+      window.scrollTo(0, i)
+      await delay(100)
+    }
+  })
 
-  await scrollToTop(page)
+  // scroll top
+  await page.evaluate(async () => {
+    const delay = (ms: number) =>
+      new Promise((resolve) => setTimeout(resolve, ms))
+    for (let i = document.body.scrollHeight; i > 0; i -= 50) {
+      window.scrollTo(0, i)
+      await delay(50)
+    }
+  })
 
   await expect(page).toHaveScreenshot("post.png", {
     fullPage: true,
@@ -37,20 +53,3 @@ test("navigation", async ({ page }) => {
   await expect(page).toHaveURL(/demo/)
   await expect(page).toHaveTitle(/demo/)
 })
-
-const scrollToBottom = async (page: Page) => {
-  await page.evaluate(() => {
-    const browserHeight = window.innerHeight
-    const pageHeight = document.body.scrollHeight
-
-    for (let i = 0; i < pageHeight; i += browserHeight) {
-      window.scrollTo(0, i)
-    }
-  })
-}
-
-const scrollToTop = async (page: Page) => {
-  await page.evaluate(() => {
-    window.scrollTo(0, 0)
-  })
-}

@@ -31,7 +31,7 @@ export const TableOfContents = (props: Props) => {
       }
     })
     return () => observerRef.current?.disconnect()
-  }, [props.headings, activeId])
+  }, [props.headings])
 
   return (
     <S.Wrap>
