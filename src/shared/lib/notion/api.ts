@@ -27,7 +27,7 @@ export const findPostsWherePublished = async (): Promise<
       },
     ],
   }
-  if (process.env.STAGE === "local") {
+  if (process.env.STAGE === "local" || process.env.STAGE === "preview") {
     filters.or.push({
       type: "checkbox",
       property: "Preview",
