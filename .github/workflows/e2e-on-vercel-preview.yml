@@ -1,0 +1,31 @@
+name: e2e-on-vercel-preview
+
+on:
+  issue_comment:
+    types: [ edited ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Capture Vercel preview URL
+        id: vercel_preview_url
+        uses: aaron-binary/vercel-preview-url-action@v0.0.3
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Install dependencies
+        run: yarn
+      - name: Install Playwright Browsers
+        run: yarn playwright install --with-deps
+      - name: Run e2e tests
+        run: E2E_BASE_URL=${{ steps.vercel_preview_url.outputs.vercel_preview_url }} yarn test:e2e
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30

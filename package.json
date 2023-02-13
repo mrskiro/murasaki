@@ -4,13 +4,17 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:e2e": "next dev -p 3333",
     "build": "next build",
     "postbuild": "next-sitemap --config sitemap.config.js",
     "start": "next start",
     "lint": "next lint --dir .",
     "lint:fix": "next lint --dir . --fix",
     "type-check": "tsc --noEmit",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "test:e2e": "playwright test",
+    "update-snapshots": "yarn test:e2e --update-snapshots",
+    "e2e-play": "playwright codegen localhost:3000"
   },
   "dependencies": {
     "@notionhq/client": "2.2.3",
@@ -23,6 +27,7 @@
     "styled-components": "5.3.5"
   },
   "devDependencies": {
+    "@playwright/test": "^1.30.0",
     "@types/node": "18.0.0",
     "@types/prismjs": "1.26.0",
     "@types/react": "18.0.14",
