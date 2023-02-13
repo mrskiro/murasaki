@@ -1,3 +1,3 @@
 # 🟪
 
-Built with Next.js and NotionAPI.
+Built with Next.js and Notion API.
