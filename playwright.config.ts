@@ -70,7 +70,7 @@ export default defineConfig({
   // outputDir: "./e2e/snapshots",
 
   webServer: {
-    command: "yarn start",
+    command: "yarn build && yarn start",
     url: "http://localhost:3000",
     reuseExistingServer: !process.env.CI,
   },
