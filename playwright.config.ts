@@ -1,14 +1,7 @@
 import { defineConfig, devices } from "@playwright/test"
 
-/**
- * Read environment variables from file.
- * https://github.com/motdotla/dotenv
- */
-// require('dotenv').config();
+const BASE_URL = process.env.E2E_BASE_URL ?? "http://localhost:3000"
 
-/**
- * See https://playwright.dev/docs/test-configuration.
- */
 export default defineConfig({
   testDir: "./e2e",
   timeout: 60 * 1000,
@@ -32,7 +25,7 @@ export default defineConfig({
   use: {
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
     actionTimeout: 0,
-    baseURL: "http://localhost:3000",
+    baseURL: BASE_URL,
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: "on-first-retry",
@@ -66,12 +59,9 @@ export default defineConfig({
     },
   ],
 
-  /* Folder for test artifacts such as screenshots, videos, traces, etc. */
-  // outputDir: "./e2e/snapshots",
-
-  webServer: {
-    command: "yarn build && yarn start",
-    url: "http://localhost:3000",
-    reuseExistingServer: !process.env.CI,
-  },
+  // webServer: {
+  //   command: "yarn build && yarn start",
+  //   url: "http://localhost:3000",
+  //   reuseExistingServer: !process.env.CI,
+  // },
 })
