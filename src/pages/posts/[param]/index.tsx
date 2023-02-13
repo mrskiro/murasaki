@@ -52,6 +52,7 @@ export const getStaticProps: GetStaticProps<Props, { param: string }> = async (
 }
 
 const Page: NextPageWithLayout<Props> = (props) => {
+  console.log("env", process.env)
   const router = useRouter()
   if (router.isFallback) {
     return <p>loading...</p>
