@@ -4,7 +4,6 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "dev:e2e": "next dev -p 3333",
     "build": "next build",
     "postbuild": "next-sitemap --config sitemap.config.js",
     "start": "next start",
