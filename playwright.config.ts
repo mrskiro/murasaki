@@ -2,6 +2,8 @@ import { defineConfig, devices } from "@playwright/test"
 
 const BASE_URL = process.env.E2E_BASE_URL ?? "http://localhost:3000"
 
+console.log("CI", process.env.CI)
+
 export default defineConfig({
   testDir: "./e2e",
   timeout: 60 * 1000,
@@ -59,9 +61,9 @@ export default defineConfig({
     },
   ],
 
-  // webServer: {
-  //   command: "yarn build && yarn start",
-  //   url: "http://localhost:3000",
-  //   reuseExistingServer: !process.env.CI,
-  // },
+  webServer: {
+    command: "yarn build && yarn start",
+    url: "http://localhost:3000",
+    reuseExistingServer: !process.env.CI,
+  },
 })
