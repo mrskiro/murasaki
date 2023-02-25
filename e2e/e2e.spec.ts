@@ -34,6 +34,8 @@ test("screen shots", async ({ page }) => {
     }
   })
 
+  await page.waitForTimeout(2000)
+
   await expect(page).toHaveScreenshot("post.png", {
     fullPage: true,
   })
