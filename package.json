@@ -25,6 +25,8 @@
     "styled-components": "5.3.5"
   },
   "devDependencies": {
+    "@commitlint/cli": "17.5.1",
+    "@commitlint/config-conventional": "17.4.4",
     "@playwright/test": "^1.30.0",
     "@types/node": "18.0.0",
     "@types/prismjs": "1.26.0",
