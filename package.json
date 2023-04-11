@@ -7,9 +7,11 @@
     "build": "next build",
     "postbuild": "next-sitemap --config sitemap.config.js",
     "start": "next start",
-    "lint": "next lint --dir .",
-    "lint:fix": "next lint --dir . --fix",
-    "type-check": "tsc --noEmit",
+    "lint": "run-s -c lint:*",
+    "lint:eslint": "next lint --dir .",
+    "lint:eslint:fix": "next lint --dir . --fix",
+    "lint:html": "markuplint \"./src/**/*.tsx\"",
+    "lint:tsc": "tsc --noEmit",
     "prepare": "husky install",
     "test:e2e": "playwright test",
     "update-snapshots": "yarn test:e2e --update-snapshots"
@@ -27,6 +29,8 @@
   "devDependencies": {
     "@commitlint/cli": "17.5.1",
     "@commitlint/config-conventional": "17.4.4",
+    "@markuplint/jsx-parser": "3.6.1",
+    "@markuplint/react-spec": "3.6.1",
     "@playwright/test": "^1.30.0",
     "@types/node": "18.0.0",
     "@types/prismjs": "1.26.0",
@@ -38,7 +42,9 @@
     "eslint-config-next": "12.1.6",
     "eslint-plugin-import": "2.26.0",
     "husky": "8.0.0",
+    "markuplint": "3.7.0",
     "next-sitemap": "3.1.49",
+    "npm-run-all": "4.1.5",
     "typescript": "4.9.5"
   }
 }

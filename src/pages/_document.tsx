@@ -35,8 +35,9 @@ class MyDocument extends Document {
     return (
       <Html lang="ja">
         <Head>
+          {/* TODO: https://web.dev/font-best-practices/ */}
           <link
-            href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=optional"
+            href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&amp;display=optional"
             rel="stylesheet"
           />
         </Head>

@@ -40,6 +40,8 @@ export const usePegeView = () => {
   }, [router.events])
 }
 
+const G_TAG_ID = "gtag-init"
+
 export const GoogleAnalytics = () => (
   <>
     <Script
@@ -47,7 +49,7 @@ export const GoogleAnalytics = () => (
       src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ANALYTICS_ID}`}
     />
     <Script
-      id="gtag-init"
+      id={G_TAG_ID}
       strategy="afterInteractive"
       dangerouslySetInnerHTML={{
         __html: `
