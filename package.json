@@ -9,6 +9,7 @@
     "start": "next start",
     "lint": "next lint --dir .",
     "lint:fix": "next lint --dir . --fix",
+    "lint:html": "markuplint \"./src/**/*.tsx\"",
     "type-check": "tsc --noEmit",
     "prepare": "husky install",
     "test:e2e": "playwright test",
