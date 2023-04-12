@@ -7,7 +7,8 @@ import {
 import { load } from "@/shared/lib/config"
 
 const { NOTION_TOKEN } = load()
-const DATABASE_ID = "3dc71c3166304af6bcde94eb88258b0a"
+// TODO: envに移動
+const DATABASE_ID = "1afad33e822d4042b703999915c8bc24"
 
 const client = new Notion.Client({
   auth: NOTION_TOKEN,
