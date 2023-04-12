@@ -7,7 +7,8 @@ const Context = React.createContext<{ isDark: boolean; onToggle: () => void }>({
   onToggle: () => {},
 })
 
-const STORAGE_KEY = "murasak1.com_theme_is_dark"
+// TODO: envに移動
+const STORAGE_KEY = "mrskiro.dev_theme_is_dark"
 
 export const ThemeProvider = (props: React.PropsWithChildren) => {
   const [isDark, setIsDark] = React.useState<boolean | null>(null)

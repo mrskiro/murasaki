@@ -10,8 +10,9 @@ export const Meta = (props: Props) => {
   const og = `https://og-image-eta-sable.vercel.app/${encodeURIComponent(
     props.title
   )}`
+  // TODO: envに移動
   const fullPath = `https://${
-    process.env.NEXT_PUBLIC_VERCEL_URL || "murasak1.com"
+    process.env.NEXT_PUBLIC_VERCEL_URL || "mrskiro.dev"
   }`
   return (
     <Head>
@@ -32,7 +33,8 @@ export const Meta = (props: Props) => {
       <meta property="og:title" content={props.title} />
       <meta property="og:image" content={og} />
       <meta property="og:url" content={fullPath} />
-      <meta property="og:site_name" content="murasak1.com" />
+      {/* TODO: envに移動 */}
+      <meta property="og:site_name" content="mrskiro.dev" />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
     </Head>
