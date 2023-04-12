@@ -1,9 +1,0 @@
-# *
-User-agent: *
-Allow: /
-
-# Host
-Host: https://murasak1.com/
-
-# Sitemaps
-Sitemap: https://murasak1.com/sitemap.xml

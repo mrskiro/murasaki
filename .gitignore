@@ -35,6 +35,8 @@ yarn-error.log*
 *.tsbuildinfo
 
 /public/posts
+/public/robots.txt
+/public/sitemap*
 
 /test-results/
 /playwright-report/
