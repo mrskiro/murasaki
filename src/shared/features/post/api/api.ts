@@ -25,12 +25,16 @@ export const findPosts = async (): Promise<Post[]> => {
     if (!slug) {
       throw new Error("not exist slug rich text property")
     }
+    const createdAt = v.properties["CreatedAt"]
+    if (createdAt?.type !== "date") {
+      throw new Error("not exist createdAt property")
+    }
     return {
       id: v.id,
       type: "internal",
       title: nameProperty.title[0]?.plain_text || "",
       link: `/posts/${slug.plain_text}`,
-      createdAt: v.created_time,
+      createdAt: createdAt.date?.start ?? v.created_time,
       updatedAt: v.last_edited_time,
     }
   })
@@ -54,10 +58,16 @@ export const findPostDetailBySlug = async (
   if (!title) {
     throw new Error(`not exist title: ${nameProperty.title}`)
   }
+
+  const createdAtProperty = meta.properties["CreatedAt"]
+  if (!createdAtProperty || createdAtProperty?.type !== "date") {
+    throw new Error("not exist createdAt")
+  }
+
   return {
     title: richTextFrom(title),
     blocks: blocksFrom(blocks),
-    createdAt: meta.created_time,
+    createdAt: createdAtProperty.date?.start ?? meta.created_time,
     updatedAt: meta.last_edited_time,
   }
 }
