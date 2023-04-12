@@ -20,7 +20,8 @@ export const Meta = (props: Props) => {
         rel="icon"
         href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text x=%2250%%22 y=%2250%%22 style=%22dominant-baseline:central;text-anchor:middle;font-size:90px;%22&gt;🟣&lt;/text&gt;&lt;/svg&gt;"
       />
-      <title>{`${props.title}`}</title>
+      {/* TODO: envに移動 */}
+      <title>{`${props.title} | mrskiro.dev`}</title>
 
       {props.description && (
         <meta name="description" content={props.description} />

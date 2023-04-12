@@ -46,8 +46,8 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 const Page: NextPageWithLayout<Props> = (props) => (
   <>
     <Meta
-      title="🟣🟣🟪🟪"
-      description="むらさきのブログです。"
+      title="Posts"
+      description="むらさきの技術ブログです。"
       ogType="website"
     />
     <Posts posts={props.posts} />
