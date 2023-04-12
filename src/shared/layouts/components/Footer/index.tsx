@@ -5,8 +5,8 @@ import { AppLink } from "@/shared/components/AppLink"
 export const Footer = () => (
   <Wrap>
     <Detail>
-      <Small>Copyright 2022 Haruki Murasaki</Small>
-      <AppLink isExternal href="https://github.com/purp1eeeee/murasaki">
+      <Small>Copyright 2023 Haruki Murasaki</Small>
+      <AppLink isExternal href="https://github.com/mrskiro/mrskiro.dev">
         <GoMarkGithub size="24px" />
       </AppLink>
     </Detail>
