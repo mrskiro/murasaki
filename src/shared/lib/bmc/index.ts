@@ -1,1 +1,1 @@
-export * from "./BmcButton"
+export * from "./bmc-button"

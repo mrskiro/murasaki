@@ -3,10 +3,10 @@ import { useRouter } from "next/router"
 import { load } from "@/shared/lib/config"
 import { Meta } from "@/shared/lib/meta"
 import { findPostDetailById } from "@/shared/features/post/api"
-import { PostDetail } from "@/shared/features/post/components/PostDetail"
-import { TableOfContents } from "@/shared/features/post/components/TableOfContents"
+import { PostDetail } from "@/shared/features/post/components/post-detail"
+import { TableOfContents } from "@/shared/features/post/components/table-of-contents"
 import * as PostTypes from "@/shared/features/post/types"
-import { ThreeColumn } from "@/shared/layouts/ThreeColumn"
+import { ThreeColumn } from "@/shared/layouts/three-column"
 import { NextPageWithLayout } from "../_app"
 
 type Props = {

@@ -1,6 +1,6 @@
 import { useId, useRef, useState } from "react"
 import styled, { css, keyframes } from "styled-components"
-import { useTheme } from "../../Context"
+import { useTheme } from "../../context"
 
 export const Switcher = () => {
   const id = useId()

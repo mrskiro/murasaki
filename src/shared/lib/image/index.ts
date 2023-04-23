@@ -1,1 +1,1 @@
-export { toPublic, generateImagePath } from "./toPublic"
+export { toPublic, generateImagePath } from "./to-public"

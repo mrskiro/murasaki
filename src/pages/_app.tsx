@@ -2,8 +2,8 @@ import { NextPage } from "next"
 import * as React from "react"
 import { isPrd } from "@/shared/lib/environment"
 import { GoogleAnalytics, usePegeView } from "@/shared/lib/log"
-import { ResetStyle } from "@/shared/lib/style/resetStyle"
-import { ThemeProvider } from "@/shared/features/theme/Context"
+import { ResetStyle } from "@/shared/lib/style/reset-style"
+import { ThemeProvider } from "@/shared/features/theme/context"
 import type { AppProps } from "next/app"
 
 export type NextPageWithLayout<P = unknown> = NextPage<P> & {

@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import { useRouter } from "next/router"
-import { AppLink } from "@/shared/components/AppLink"
+import { AppLink } from "@/shared/components/app-link"
 
 const lists = [
   {

@@ -5,10 +5,10 @@ import { toPublic } from "@/shared/lib/image"
 import { Meta } from "@/shared/lib/meta"
 import { NextPageWithLayout } from "@/pages/_app"
 import { findPostDetailBySlug, findPosts } from "@/shared/features/post/api"
-import { PostDetail } from "@/shared/features/post/components/PostDetail"
-import { TableOfContents } from "@/shared/features/post/components/TableOfContents"
+import { PostDetail } from "@/shared/features/post/components/post-detail"
+import { TableOfContents } from "@/shared/features/post/components/table-of-contents"
 import * as PostTypes from "@/shared/features/post/types"
-import { ThreeColumn } from "@/shared/layouts/ThreeColumn"
+import { ThreeColumn } from "@/shared/layouts/three-column"
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = await findPosts()

@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import { GoMarkGithub } from "react-icons/go"
-import { AppLink } from "@/shared/components/AppLink"
+import { AppLink } from "@/shared/components/app-link"
 
 export const Footer = () => (
   <Wrap>

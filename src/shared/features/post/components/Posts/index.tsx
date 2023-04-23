@@ -1,5 +1,5 @@
 import { Post } from "../../types"
-import { PostItem } from "./components/PostItem"
+import { PostItem } from "./components/post-item"
 import * as S from "./styled"
 
 type Props = {
