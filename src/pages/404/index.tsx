@@ -4,8 +4,7 @@ import { NextPageWithLayout } from "../_app"
 
 const Page: NextPageWithLayout<unknown> = () => (
   <>
-    <Meta title="🟣🟣🟪🟪" ogType="website" />
-    {/* TODO:  */}
+    <Meta title="404" ogType="website" />
     <p>このページは削除されているか、URLが間違っている可能性があります。</p>
   </>
 )
