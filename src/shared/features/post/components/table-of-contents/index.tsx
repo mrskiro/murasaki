@@ -10,10 +10,7 @@ type Props = {
 export const TableOfContents = (props: Props) => {
   const [activeId, setActiveId] = React.useState<string>("")
   const observerRef = React.useRef<IntersectionObserver>()
-  // eslint-disable-next-line no-constant-condition
-  if (true) {
-    throw new Error("test")
-  }
+
   React.useEffect(() => {
     const elements = props.headings
       .map((v) => encodeURIComponent(v.richText[0]?.plainText || ""))
@@ -40,6 +37,14 @@ export const TableOfContents = (props: Props) => {
   return (
     <S.Wrap>
       <S.Ul>
+        <button
+          type="button"
+          onClick={() => {
+            throw new Error("aaa")
+          }}
+        >
+          test
+        </button>
         {props.headings.map((v) => (
           <S.Li
             key={v.id}
