@@ -21,7 +21,7 @@ module.exports = withSentryConfig(
 
     // Suppresses source map uploading logs during build
     silent: true,
-
+    authToken: process.env.SENTRY_AUTH_TOKEN,
     org: process.env.SENTRY_ORG,
     project: process.env.SENTRY_PROJECT,
   },
