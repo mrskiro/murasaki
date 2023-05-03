@@ -13,6 +13,7 @@ const STORAGE_KEY = "mrskiro.dev_theme_is_dark"
 export const ThemeProvider = (props: React.PropsWithChildren) => {
   const [isDark, setIsDark] = React.useState<boolean | null>(null)
   const onToggle = React.useCallback(() => {
+    throw new Error("event handle error")
     setIsDark((v) => {
       window.localStorage.setItem(STORAGE_KEY, !v ? "true" : "false")
       return !v

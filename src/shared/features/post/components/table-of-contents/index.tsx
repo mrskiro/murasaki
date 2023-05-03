@@ -13,7 +13,7 @@ export const TableOfContents = (props: Props) => {
 
   // eslint-disable-next-line no-constant-condition
   if (true) {
-    throw new Error("test")
+    throw new Error("component error")
   }
 
   React.useEffect(() => {

@@ -5,6 +5,7 @@ import { GoogleAnalytics, usePegeView } from "@/shared/lib/log"
 import { ResetStyle } from "@/shared/lib/style/reset-style"
 import { ErrorBoundary } from "@/shared/components/error-boundary"
 import { ThemeProvider } from "@/shared/features/theme/context"
+import { TwoColumn } from "@/shared/layouts/two-column"
 import type { AppProps } from "next/app"
 
 export type NextPageWithLayout<P = unknown> = NextPage<P> & {
@@ -23,12 +24,16 @@ const MyApp = (props: AppPropsWithLayout) => {
   return (
     <>
       {isPrd() && <GoogleAnalytics />}
-      {/* <ErrorBoundary fallback={() => <p>error fallback</p>}> */}
       <ResetStyle />
       <ThemeProvider>
-        {getLayout(<props.Component {...props.pageProps} />)}
+        <ErrorBoundary
+          fallback={() => (
+            <TwoColumn>エラーが発生しました。リロードしてください。</TwoColumn>
+          )}
+        >
+          {getLayout(<props.Component {...props.pageProps} />)}
+        </ErrorBoundary>
       </ThemeProvider>
-      {/* </ErrorBoundary> */}
     </>
   )
 }
