@@ -6,8 +6,8 @@
 import * as Sentry from "@sentry/nextjs"
 
 Sentry.init({
-  enabled: process.env.STAGE !== "local",
-  environment: process.env.STAGE,
+  enabled: process.env.NEXT_PUBLIC_STAGE !== "local",
+  environment: process.env.NEXT_PUBLIC_STAGE,
   dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
 
   // Adjust this value in production, or use tracesSampler for greater control
