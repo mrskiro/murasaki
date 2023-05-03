@@ -3,6 +3,7 @@ import * as React from "react"
 import { isPrd } from "@/shared/lib/environment"
 import { GoogleAnalytics, usePegeView } from "@/shared/lib/log"
 import { ResetStyle } from "@/shared/lib/style/reset-style"
+import { ErrorBoundary } from "@/shared/components/error-boundary"
 import { ThemeProvider } from "@/shared/features/theme/context"
 import type { AppProps } from "next/app"
 
@@ -22,10 +23,12 @@ const MyApp = (props: AppPropsWithLayout) => {
   return (
     <>
       {isPrd() && <GoogleAnalytics />}
-      <ResetStyle />
-      <ThemeProvider>
-        {getLayout(<props.Component {...props.pageProps} />)}
-      </ThemeProvider>
+      <ErrorBoundary fallback={() => <p>error fallback</p>}>
+        <ResetStyle />
+        <ThemeProvider>
+          {getLayout(<props.Component {...props.pageProps} />)}
+        </ThemeProvider>
+      </ErrorBoundary>
     </>
   )
 }
