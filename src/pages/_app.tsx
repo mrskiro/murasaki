@@ -23,12 +23,12 @@ const MyApp = (props: AppPropsWithLayout) => {
   return (
     <>
       {isPrd() && <GoogleAnalytics />}
-      <ErrorBoundary fallback={() => <p>error fallback</p>}>
-        <ResetStyle />
-        <ThemeProvider>
-          {getLayout(<props.Component {...props.pageProps} />)}
-        </ThemeProvider>
-      </ErrorBoundary>
+      {/* <ErrorBoundary fallback={() => <p>error fallback</p>}> */}
+      <ResetStyle />
+      <ThemeProvider>
+        {getLayout(<props.Component {...props.pageProps} />)}
+      </ThemeProvider>
+      {/* </ErrorBoundary> */}
     </>
   )
 }

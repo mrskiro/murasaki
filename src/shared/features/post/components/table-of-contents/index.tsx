@@ -11,6 +11,7 @@ export const TableOfContents = (props: Props) => {
   const [activeId, setActiveId] = React.useState<string>("")
   const observerRef = React.useRef<IntersectionObserver>()
 
+  // eslint-disable-next-line no-constant-condition
   if (true) {
     throw new Error("test")
   }
