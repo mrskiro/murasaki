@@ -2,7 +2,8 @@
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
-    "next/core-web-vitals"
+    "next/core-web-vitals",
+    "plugin:storybook/recommended"
   ],
   "plugins": ["import"],
   "rules": {
@@ -11,29 +12,58 @@
     "no-self-compare": "error",
     "no-template-curly-in-string": "error",
     "no-unmodified-loop-condition": "error",
-    "complexity": ["error", { "max": 16 }],
+    "complexity": [
+      "error",
+      {
+        "max": 16
+      }
+    ],
     "default-case": "error",
     "default-case-last": "error",
     "eqeqeq": "error",
-    "func-style": ["error", "declaration", { "allowArrowFunctions": true }],
+    "func-style": [
+      "error",
+      "declaration",
+      {
+        "allowArrowFunctions": true
+      }
+    ],
     "max-classes-per-file": ["error", 1],
     "max-lines": [
       "error",
-      { "max": 1000, "skipComments": true, "skipBlankLines": true }
+      {
+        "max": 1000,
+        "skipComments": true,
+        "skipBlankLines": true
+      }
     ],
     "max-lines-per-function": [
       "error",
-      { "max": 300, "skipComments": true, "skipBlankLines": true }
+      {
+        "max": 300,
+        "skipComments": true,
+        "skipBlankLines": true
+      }
     ],
     "max-params": ["error", 3],
     "no-alert": "error",
-    "no-else-return": ["error", { "allowElseIf": false }],
+    "no-else-return": [
+      "error",
+      {
+        "allowElseIf": false
+      }
+    ],
     "no-eval": "error",
     "no-floating-decimal": "error",
     "no-inline-comments": "error",
     "no-multi-assign": "error",
     "no-nested-ternary": "error",
-    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
+    "no-plusplus": [
+      "error",
+      {
+        "allowForLoopAfterthoughts": true
+      }
+    ],
     "no-unneeded-ternary": "error",
     "object-shorthand": "error",
     "prefer-arrow-callback": "error",
@@ -41,24 +71,22 @@
     "prefer-object-spread": "error",
     "prefer-template": "error",
     "yoda": "error",
-
     "@typescript-eslint/no-unused-vars": [
       "warn",
       {
         "argsIgnorePattern": "^_"
       }
     ],
-
     "@typescript-eslint/no-empty-function": "off",
     "@typescript-eslint/no-empty-interface": "off",
-
     "@typescript-eslint/no-require-imports": "warn",
     "@typescript-eslint/default-param-last": "warn",
     "@typescript-eslint/no-duplicate-imports": "warn",
-
     "react/boolean-prop-naming": [
       "warn",
-      { "rule": "^(is|has)[A-Z]([A-Za-z0-9]?)+" }
+      {
+        "rule": "^(is|has)[A-Z]([A-Za-z0-9]?)+"
+      }
     ],
     "react/button-has-type": ["warn"],
     "react/destructuring-assignment": ["error", "never"],
@@ -70,7 +98,12 @@
       }
     ],
     "react/hook-use-state": "warn",
-    "react/no-unstable-nested-components": ["warn", { "allowAsProps": true }],
+    "react/no-unstable-nested-components": [
+      "warn",
+      {
+        "allowAsProps": true
+      }
+    ],
     "react/self-closing-comp": [
       "error",
       {
@@ -82,16 +115,33 @@
     "react/jsx-boolean-value": ["warn", "never"],
     "react/jsx-curly-brace-presence": [
       "warn",
-      { "props": "never", "children": "never", "propElementValues": "always" }
+      {
+        "props": "never",
+        "children": "never",
+        "propElementValues": "always"
+      }
     ],
     "react/jsx-fragments": ["error"],
     "react/jsx-handler-names": ["error"],
-    "react/jsx-max-depth": ["error", { "max": 20 }],
+    "react/jsx-max-depth": [
+      "error",
+      {
+        "max": 20
+      }
+    ],
     "react/jsx-no-constructed-context-values": "warn",
-    "react/jsx-no-useless-fragment": ["error", { "allowExpressions": true }],
+    "react/jsx-no-useless-fragment": [
+      "error",
+      {
+        "allowExpressions": true
+      }
+    ],
     "react/jsx-pascal-case": [
       "error",
-      { "allowNamespace": true, "allowLeadingUnderscore": true }
+      {
+        "allowNamespace": true,
+        "allowLeadingUnderscore": true
+      }
     ],
     "react/jsx-props-no-spreading": [
       "error",
@@ -100,7 +150,6 @@
         "custom": "enforce"
       }
     ],
-
     "import/order": [
       "error",
       {
@@ -114,7 +163,10 @@
           "object",
           "type"
         ],
-        "alphabetize": { "order": "asc", "caseInsensitive": true },
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        },
         "pathGroupsExcludedImportTypes": ["next", "react", "styled-components"],
         "pathGroups": [
           {
@@ -142,7 +194,11 @@
             "group": "internal",
             "position": "before"
           },
-          { "pattern": "@/**", "group": "internal", "position": "before" }
+          {
+            "pattern": "@/**",
+            "group": "internal",
+            "position": "before"
+          }
         ]
       }
     ]
