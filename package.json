@@ -36,6 +36,7 @@
     "@markuplint/jsx-parser": "3.6.1",
     "@markuplint/react-spec": "3.6.1",
     "@playwright/test": "^1.30.0",
+    "@storybook/addon-a11y": "7.0.9",
     "@storybook/addon-essentials": "7.0.9",
     "@storybook/addon-interactions": "7.0.9",
     "@storybook/addon-links": "7.0.9",
