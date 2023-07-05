@@ -9,7 +9,7 @@ ls:
 
   src/pages:
     .dir: kebab-case | regex:^_[a-z-.]* | regex:^\[\w*\]
-  src/{shared}:
+  src/{components,features,layouts,lib}:
     .dir: kebab-case | regex:.*__snapshots__.*
     .tsx: kebab-case
     .test.tsx: kebab-case

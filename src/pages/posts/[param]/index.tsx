@@ -1,14 +1,14 @@
 import { GetStaticPaths, GetStaticProps } from "next"
 import { useRouter } from "next/router"
-import { BmcButton } from "@/shared/lib/bmc"
-import { toPublic } from "@/shared/lib/image"
-import { Meta } from "@/shared/lib/meta"
+import { findPostDetailBySlug, findPosts } from "@/features/post/api"
+import { PostDetail } from "@/features/post/components/post-detail"
+import { TableOfContents } from "@/features/post/components/table-of-contents"
+import * as PostTypes from "@/features/post/types"
+import { ThreeColumn } from "@/layouts/three-column"
+import { BmcButton } from "@/lib/bmc"
+import { toPublic } from "@/lib/image"
+import { Meta } from "@/lib/meta"
 import { NextPageWithLayout } from "@/pages/_app"
-import { findPostDetailBySlug, findPosts } from "@/shared/features/post/api"
-import { PostDetail } from "@/shared/features/post/components/post-detail"
-import { TableOfContents } from "@/shared/features/post/components/table-of-contents"
-import * as PostTypes from "@/shared/features/post/types"
-import { ThreeColumn } from "@/shared/layouts/three-column"
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = await findPosts()

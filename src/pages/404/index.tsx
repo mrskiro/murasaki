@@ -1,5 +1,5 @@
-import { Meta } from "@/shared/lib/meta"
-import { TwoColumn } from "@/shared/layouts/two-column"
+import { TwoColumn } from "@/layouts/two-column"
+import { Meta } from "@/lib/meta"
 import { NextPageWithLayout } from "../_app"
 
 const Page: NextPageWithLayout<unknown> = () => (

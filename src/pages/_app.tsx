@@ -1,11 +1,11 @@
 import { NextPage } from "next"
 import * as React from "react"
-import { isPrd } from "@/shared/lib/environment"
-import { GoogleAnalytics, usePegeView } from "@/shared/lib/log"
-import { ResetStyle } from "@/shared/lib/style/reset-style"
-import { ErrorBoundary } from "@/shared/components/error-boundary"
-import { ThemeProvider } from "@/shared/features/theme/context"
-import { TwoColumn } from "@/shared/layouts/two-column"
+import { ErrorBoundary } from "@/components/error-boundary"
+import { ThemeProvider } from "@/features/theme/context"
+import { TwoColumn } from "@/layouts/two-column"
+import { isPrd } from "@/lib/environment"
+import { GoogleAnalytics, usePegeView } from "@/lib/log"
+import { ResetStyle } from "@/lib/style/reset-style"
 import type { AppProps } from "next/app"
 
 export type NextPageWithLayout<P = unknown> = NextPage<P> & {

@@ -1,11 +1,11 @@
 import type { GetStaticProps } from "next"
-import { load } from "@/shared/lib/config"
-import { Meta } from "@/shared/lib/meta"
-import { parseByURL } from "@/shared/lib/parser/rss"
-import { findPosts } from "@/shared/features/post/api"
-import { Posts } from "@/shared/features/post/components/posts"
-import { Post } from "@/shared/features/post/types/post"
-import { TwoColumn } from "@/shared/layouts/two-column"
+import { findPosts } from "@/features/post/api"
+import { Posts } from "@/features/post/components/posts"
+import { Post } from "@/features/post/types/post"
+import { TwoColumn } from "@/layouts/two-column"
+import { load } from "@/lib/config"
+import { Meta } from "@/lib/meta"
+import { parseByURL } from "@/lib/parser/rss"
 import { NextPageWithLayout } from "./_app"
 
 type Props = {
