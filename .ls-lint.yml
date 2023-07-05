@@ -1,0 +1,30 @@
+ls:
+  # all files
+  .js: kebab-case | point.case
+  .ts: kebab-case | point.case
+  .d.ts: kebab-case
+  .json: kebab-case | point.case
+  .yml: kebab-case | point.case
+  .dir: kebab-case | point.case
+
+  src/pages:
+    .dir: kebab-case | regex:^_[a-z-.]* | regex:^\[\w*\]
+  src/{shared}:
+    .dir: kebab-case | regex:.*__snapshots__.*
+    .tsx: kebab-case
+    .test.tsx: kebab-case
+    .stories.tsx: kebab-case
+  public:
+    .dir: kebab-case
+    .png: kebab-case
+    .txt: kebab-case
+    .xml: kebab-case
+  e2e:
+    .dir: kebab-case | point.case | regex:.*e2e.spec.ts-snapshots.*
+ignore:
+  - node_modules
+  - .git
+  - .next
+  - .husky
+  - test-results
+  - .ls-lint.yml
