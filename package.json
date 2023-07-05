@@ -12,6 +12,7 @@
     "lint:eslint:fix": "next lint --dir . --fix",
     "lint:html": "markuplint \"./src/**/*.tsx\"",
     "lint:tsc": "tsc --noEmit",
+    "lint:ls": "ls-lint",
     "prepare": "husky install",
     "test": "jest",
     "test:e2e": "playwright test",
@@ -33,6 +34,7 @@
   "devDependencies": {
     "@commitlint/cli": "17.5.1",
     "@commitlint/config-conventional": "17.4.4",
+    "@ls-lint/ls-lint": "2.0.0",
     "@markuplint/jsx-parser": "3.6.1",
     "@markuplint/react-spec": "3.6.1",
     "@playwright/test": "^1.30.0",
