@@ -6,8 +6,12 @@ export const Footer = () => (
   <Wrap>
     <Detail>
       <Small>Copyright 2023 Haruki Murasaki</Small>
-      <AppLink isExternal href="https://github.com/mrskiro/mrskiro.dev">
-        <GoMarkGithub size="24px" />
+      <AppLink
+        isExternal
+        href="https://github.com/mrskiro/mrskiro.dev"
+        aria-label="Go to GitHub"
+      >
+        <GoMarkGithub size="24px" aria-hidden />
       </AppLink>
     </Detail>
   </Wrap>
