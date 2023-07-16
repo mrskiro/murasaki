@@ -1,4 +1,3 @@
-import { NextPage } from "next"
 import * as React from "react"
 import { ErrorBoundary } from "@/components/error-boundary"
 import { ThemeProvider } from "@/features/theme/context"
@@ -8,18 +7,8 @@ import { GoogleAnalytics, usePegeView } from "@/lib/log"
 import { ResetStyle } from "@/lib/style/reset-style"
 import type { AppProps } from "next/app"
 
-export type NextPageWithLayout<P = unknown> = NextPage<P> & {
-  getLayout?: (page: React.ReactElement<P>) => React.ReactNode
-}
-
-type AppPropsWithLayout = AppProps & {
-  Component: NextPageWithLayout
-}
-
-const MyApp = (props: AppPropsWithLayout) => {
+const MyApp = (props: AppProps) => {
   usePegeView()
-
-  const getLayout = props.Component.getLayout ?? ((page) => page)
 
   return (
     <>
@@ -32,7 +21,7 @@ const MyApp = (props: AppPropsWithLayout) => {
             <TwoColumn>エラーが発生しました。リロードしてください。</TwoColumn>
           )}
         >
-          {getLayout(<props.Component {...props.pageProps} />)}
+          <props.Component {...props.pageProps} />
         </ErrorBoundary>
       </ThemeProvider>
     </>

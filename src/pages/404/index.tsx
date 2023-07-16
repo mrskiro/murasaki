@@ -1,12 +1,11 @@
-import { TwoColumn } from "@/layouts/two-column"
+import { NextPage } from "next"
+import { NotFoundPage } from "@/components/pages/404"
 import { Meta } from "@/lib/meta"
-import { NextPageWithLayout } from "../_app"
 
-const Page: NextPageWithLayout<unknown> = () => (
+const Page: NextPage<unknown> = () => (
   <>
     <Meta title="404" ogType="website" />
-    <p>このページは削除されているか、URLが間違っている可能性があります。</p>
+    <NotFoundPage />
   </>
 )
-Page.getLayout = (page) => <TwoColumn>{page}</TwoColumn>
 export default Page

@@ -2,6 +2,9 @@ import { useId, useRef, useState } from "react"
 import styled, { css, keyframes } from "styled-components"
 import { useTheme } from "../../context"
 
+/**
+ * TODO: buttonにする、文書構造的に最初に読み上げられるのを避ける
+ */
 export const Switcher = () => {
   const id = useId()
 
@@ -28,7 +31,13 @@ export const Switcher = () => {
   return (
     <Wrap htmlFor={id}>
       <Cable $animated={isAnimated} />
-      <Blub type="checkbox" id={id} checked={isDark} onChange={onChange} />
+      <Blub
+        type="checkbox"
+        id={id}
+        checked={isDark}
+        onChange={onChange}
+        aria-label={`Switch theme, now is ${isDark ? "dark" : "light"} mode`}
+      />
     </Wrap>
   )
 }

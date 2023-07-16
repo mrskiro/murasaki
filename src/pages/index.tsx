@@ -1,12 +1,10 @@
-import type { GetStaticProps } from "next"
+import type { GetStaticProps, NextPage } from "next"
+import { RootPage } from "@/components/pages/root/root"
 import { findPosts } from "@/features/post/api"
-import { Posts } from "@/features/post/components/posts"
 import { Post } from "@/features/post/types/post"
-import { TwoColumn } from "@/layouts/two-column"
 import { load } from "@/lib/config"
 import { Meta } from "@/lib/meta"
 import { parseByURL } from "@/lib/parser/rss"
-import { NextPageWithLayout } from "./_app"
 
 type Props = {
   posts: Post[]
@@ -43,15 +41,15 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   }
 }
 
-const Page: NextPageWithLayout<Props> = (props) => (
+const Page: NextPage<Props> = (props) => (
   <>
     <Meta
       title="Posts"
       description="むらさきの技術ブログです。"
       ogType="website"
     />
-    <Posts posts={props.posts} />
+    <RootPage posts={props.posts} />
   </>
 )
-Page.getLayout = (page) => <TwoColumn>{page}</TwoColumn>
+
 export default Page
