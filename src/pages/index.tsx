@@ -1,11 +1,10 @@
-import type { GetStaticProps } from "next"
+import type { GetStaticProps, NextPage } from "next"
 import { RootPage } from "@/components/pages/root/root"
 import { findPosts } from "@/features/post/api"
 import { Post } from "@/features/post/types/post"
 import { load } from "@/lib/config"
 import { Meta } from "@/lib/meta"
 import { parseByURL } from "@/lib/parser/rss"
-import { NextPageWithLayout } from "./_app"
 
 type Props = {
   posts: Post[]
@@ -42,7 +41,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   }
 }
 
-const Page: NextPageWithLayout<Props> = (props) => (
+const Page: NextPage<Props> = (props) => (
   <>
     <Meta
       title="Posts"

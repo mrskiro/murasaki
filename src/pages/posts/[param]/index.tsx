@@ -1,11 +1,10 @@
-import { GetStaticPaths, GetStaticProps } from "next"
+import { GetStaticPaths, GetStaticProps, NextPage } from "next"
 import { useRouter } from "next/router"
 import { PostDetailPage } from "@/components/pages/posts/[param]"
 import { findPostDetailBySlug, findPosts } from "@/features/post/api"
 import * as PostTypes from "@/features/post/types"
 import { toPublic } from "@/lib/image"
 import { Meta } from "@/lib/meta"
-import { NextPageWithLayout } from "@/pages/_app"
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = await findPosts()
@@ -49,7 +48,7 @@ export const getStaticProps: GetStaticProps<Props, { param: string }> = async (
   }
 }
 
-const Page: NextPageWithLayout<Props> = (props) => {
+const Page: NextPage<Props> = (props) => {
   const router = useRouter()
   if (router.isFallback) {
     return <p>loading...</p>
