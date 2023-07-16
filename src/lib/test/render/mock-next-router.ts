@@ -11,7 +11,7 @@ const defaultNextRouterMock: Partial<NextRouter> = {
 // eslint-disable-next-line @typescript-eslint/no-require-imports, @typescript-eslint/no-var-requires
 const useRouter = jest.spyOn(require("next/router"), "useRouter")
 
-export function createMockRouter(overrides: Partial<NextRouter>) {
+const createMockRouter = (overrides: Partial<NextRouter>) => {
   return {
     ...defaultNextRouterMock,
     ...overrides,
