@@ -1,11 +1,8 @@
 import { GetStaticPaths, GetStaticProps } from "next"
 import { useRouter } from "next/router"
+import { PostDetailPage } from "@/components/pages/posts/[param]"
 import { findPostDetailBySlug, findPosts } from "@/features/post/api"
-import { PostDetail } from "@/features/post/components/post-detail"
-import { TableOfContents } from "@/features/post/components/table-of-contents"
 import * as PostTypes from "@/features/post/types"
-import { ThreeColumn } from "@/layouts/three-column"
-import { BmcButton } from "@/lib/bmc"
 import { toPublic } from "@/lib/image"
 import { Meta } from "@/lib/meta"
 import { NextPageWithLayout } from "@/pages/_app"
@@ -57,42 +54,13 @@ const Page: NextPageWithLayout<Props> = (props) => {
   if (router.isFallback) {
     return <p>loading...</p>
   }
-  const headings = props.postDetail.blocks.filter((v) => {
-    switch (v.type) {
-      case "heading1":
-      case "heading2":
-      case "heading3":
-        return true
-      default:
-        return false
-    }
-  })
+
   return (
     <>
       <Meta title={props.postDetail.title.plainText} ogType="article" />
-      <ThreeColumn renderRight={() => <TableOfContents headings={headings} />}>
-        <PostDetail postDetail={props.postDetail} />
-        <BmcButton />
-      </ThreeColumn>
+      <PostDetailPage postDetail={props.postDetail} />
     </>
   )
 }
 
-// Page.getLayout = (page) => {
-//   const headings = page.props.postDetail.blocks.filter((v) => {
-//     switch (v.type) {
-//       case "heading1":
-//       case "heading2":
-//       case "heading3":
-//         return true
-//       default:
-//         return false
-//     }
-//   })
-//   return (
-//     <ThreeColumn renderRight={() => <TableOfContents headings={headings} />}>
-//       {page}
-//     </ThreeColumn>
-//   )
-// }
 export default Page
