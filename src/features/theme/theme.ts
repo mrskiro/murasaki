@@ -3,6 +3,7 @@ type ColorCode = `#${string}`
 type TextUnit = `${string}rem`
 
 type Theme = {
+  brand: ColorCode
   color: ColorCode
   background: ColorCode
   fontSizes: Record<
@@ -49,12 +50,14 @@ const fontSizes: Record<string, TextUnit> = {
 }
 
 export const darkTheme: Theme = {
+  brand: "#AA26FF",
   color: "#CED4DA",
   background: "#373A40",
   fontSizes,
 }
 
 export const ligthTheme: Theme = {
+  brand: "#AA26FF",
   color: "#333",
   background: "#F7FAFC",
   fontSizes,
