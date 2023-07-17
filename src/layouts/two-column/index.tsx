@@ -2,15 +2,15 @@ import { PropsWithChildren } from "react"
 import { Switcher } from "@/features/theme/components/switcher"
 import { Footer } from "../components/footer"
 import { Header } from "../components/header"
-import * as S from "../styled"
-
+import * as Common from "../styled"
+import * as S from "./styled"
 type Props = Record<never, never>
 
 export const TwoColumn = (props: PropsWithChildren<Props>) => (
-  <S.Wrap>
-    <S.SwitcherWrap>
+  <Common.Wrap>
+    <Common.SwitcherWrap>
       <Switcher />
-    </S.SwitcherWrap>
+    </Common.SwitcherWrap>
 
     <S.TwoColumn>
       <S.LeftMenu>
@@ -20,8 +20,8 @@ export const TwoColumn = (props: PropsWithChildren<Props>) => (
       <S.Main>{props.children}</S.Main>
     </S.TwoColumn>
 
-    <S.Hr />
+    <Common.Hr />
 
     <Footer />
-  </S.Wrap>
+  </Common.Wrap>
 )
