@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import { useRouter } from "next/router"
 import { AppLink } from "@/components/app-link"
+import { SROnly } from "@/components/sr-only"
 
 const lists = [
   {
@@ -18,17 +19,22 @@ export const Header = () => {
   return (
     <Wrap>
       <H1>
-        <AppLink href="/">🟣</AppLink>
+        <AppLink href="/">
+          🟣
+          <SROnly label="ホーム" />
+        </AppLink>
       </H1>
-      <Ul>
-        {lists.map((v) => (
-          <li key={v.name}>
-            <AppLink href={v.href} isActive={router.asPath === v.href}>
-              {v.name}
-            </AppLink>
-          </li>
-        ))}
-      </Ul>
+      <nav aria-label="グローバルナビゲーション">
+        <Ul>
+          {lists.map((v) => (
+            <li key={v.name}>
+              <AppLink href={v.href} isActive={router.asPath === v.href}>
+                {v.name}
+              </AppLink>
+            </li>
+          ))}
+        </Ul>
+      </nav>
     </Wrap>
   )
 }
