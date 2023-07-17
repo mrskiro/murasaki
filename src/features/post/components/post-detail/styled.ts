@@ -17,10 +17,10 @@ export const MetaDetailWrap = styled.div`
 `
 
 export const Title = styled.h1`
-  font-size: 32px;
+  font-size: ${(props) => props.theme.fontSizes["3xl"]};
   font-weight: bold;
 `
 export const DateLabel = styled.p`
   text-align: right;
-  font-size: 12px;
+  font-size: ${(props) => props.theme.fontSizes.xs};
 `

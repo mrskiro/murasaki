@@ -28,17 +28,17 @@ const base = css`
 `
 const H1 = styled.h1`
   ${base};
-  font-size: 24px;
+  font-size: ${(props) => props.theme.fontSizes["2xl"]};
 `
 
 const H2 = styled.h2`
   ${base};
-  font-size: 20px;
+  font-size: ${(props) => props.theme.fontSizes.xl};
 `
 
 const H3 = styled.h3`
   ${base};
-  font-size: 18px;
+  font-size: ${(props) => props.theme.fontSizes.lg};
 `
 type As = "h1" | "h2" | "h3"
 

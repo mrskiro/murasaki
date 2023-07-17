@@ -31,5 +31,5 @@ const Detail = styled.div`
 `
 
 const Small = styled.small`
-  font-size: 12px;
+  font-size: ${(props) => props.theme.fontSizes.sm};
 `

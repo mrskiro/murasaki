@@ -9,7 +9,7 @@ export const Ul = styled.ul`
 `
 
 export const Li = styled.li<{ $level: string; $isActive: boolean }>`
-  font-size: 12px;
+  font-size: ${(props) => props.theme.fontSizes.xs};
   font-weight: ${(props) => (props.$isActive ? "bold" : "inherit")};
   ${(props) => {
     switch (props.$level) {
