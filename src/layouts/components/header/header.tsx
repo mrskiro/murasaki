@@ -40,7 +40,7 @@ const Wrap = styled.header`
 `
 
 const H1 = styled.h1`
-  font-size: 20px;
+  font-size: ${(props) => props.theme.fontSizes.xl};
 `
 
 const Ul = styled.ul`

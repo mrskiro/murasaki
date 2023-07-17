@@ -7,11 +7,11 @@ export const Wrap = styled.div`
 `
 
 export const DateLabel = styled.time`
-  font-size: 12px;
+  font-size: ${(props) => props.theme.fontSizes.xs};
 `
 
 export const Title = styled.span`
-  font-size: 14px;
+  font-size: ${(props) => props.theme.fontSizes.sm};
   display: flex;
   align-items: center;
   gap: 2px;
