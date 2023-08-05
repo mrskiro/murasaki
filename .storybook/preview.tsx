@@ -1,6 +1,8 @@
 import * as React from "react"
 import type { Preview } from "@storybook/react"
-import { ResetStyle } from "../src/shared/lib/style/reset-style"
+import { ResetStyle } from "../src/lib/style/reset-style"
+import { ligthTheme } from "../src/features/theme/theme"
+import { ThemeProvider } from "styled-components"
 
 const preview: Preview = {
   parameters: {
@@ -21,10 +23,10 @@ const preview: Preview = {
   },
   decorators: [
     (Story) => (
-      <>
+      <ThemeProvider theme={ligthTheme}>
         <ResetStyle />
         <Story />
-      </>
+      </ThemeProvider>
     ),
   ],
 }
