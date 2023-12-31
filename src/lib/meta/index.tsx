@@ -10,7 +10,7 @@ type Props = {
 export const Meta = (props: Props) => {
   const og = `https://og-image-eta-sable.vercel.app/${encodeURIComponent(
     props.title
-  )}.png`
+  )}`
 
   const router = useRouter()
   const url = `https://mrskiro.dev${router.asPath}`
@@ -29,8 +29,10 @@ export const Meta = (props: Props) => {
         <meta name="description" content={props.description} />
       )}
 
-      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={props.title} />
+      <meta name="twitter:image" content={og} />
+
       <meta property="og:url" content={url} />
       <meta property="og:title" content={props.title} />
       <meta property="og:type" content={props.ogType} />
