@@ -12,7 +12,7 @@ export const Meta = (props: Props) => {
   //   props.title
   // )}`
 
-  const og = "/assets/mrskiro.png"
+  const og = "https://www.mrskiro.dev/assets/mrskiro.png"
 
   const router = useRouter()
   const url = `https://mrskiro.dev${router.asPath}`
@@ -40,6 +40,7 @@ export const Meta = (props: Props) => {
       <meta property="og:url" content={url} />
       <meta property="og:title" content={title} />
       <meta property="og:site_name" content="mrskiro.dev" />
+      <meta property="og:image" content={og} />
 
       <meta property="og:type" content={props.ogType} />
     </Head>
