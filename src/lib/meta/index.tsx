@@ -12,11 +12,13 @@ export const Meta = (props: Props) => {
   //   props.title
   // )}`
 
-  const og = "https://mrskiro.dev/assets/mrskiro.png"
+  const og = "/assets/mrskiro.png"
 
   const router = useRouter()
   const url = `https://mrskiro.dev${router.asPath}`
 
+  /* TODO: envに移動 */
+  const title = `${props.title} | mrskiro.dev`
   return (
     <Head>
       <link
@@ -25,23 +27,21 @@ export const Meta = (props: Props) => {
       />
       <link rel="canonical" href={url} />
 
-      {/* TODO: envに移動 */}
-      <title>{`${props.title} | mrskiro.dev`}</title>
+      <title>{title}</title>
 
       {props.description && (
         <meta name="description" content={props.description} />
       )}
 
+      <meta name="twitter:site" content="@mrskiro_" />
       <meta name="twitter:card" content="summary" />
+      <meta name="twitter:image" content={og} />
 
       <meta property="og:url" content={url} />
-      <meta property="og:title" content={props.title} />
-      <meta property="og:type" content={props.ogType} />
+      <meta property="og:title" content={title} />
       <meta property="og:site_name" content="mrskiro.dev" />
 
-      <meta property="og:image" content={og} />
-      {/* <meta property="og:image:width" content="1200" />
-      <meta property="og:image:height" content="630" /> */}
+      <meta property="og:type" content={props.ogType} />
     </Head>
   )
 }
