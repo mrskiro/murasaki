@@ -1,6 +1,6 @@
 name: CI
 
-on: 
+on:
   push:
     branches:
       - main
@@ -15,7 +15,7 @@ jobs:
         with:
           node-version: 16
           cache: "yarn"
-      - name: Install dependencies 
+      - name: Install dependencies
         run: yarn --frozen-lockfile
       - name: lint
         run: yarn lint
@@ -37,7 +37,7 @@ jobs:
       - name: Install commitlint
         run: |
           yarn add conventional-changelog-conventionalcommits
-          yarn add commitlint@latest
+          yarn add commitlint@17.5.1
 
       - name: Validate current commit (last commit) with commitlint
         if: github.event_name == 'push'
@@ -54,7 +54,7 @@ jobs:
         with:
           node-version: 16
           cache: "yarn"
-      - name: Install dependencies 
+      - name: Install dependencies
         run: yarn --frozen-lockfile
       - name: test
-        run: yarn test --ci 
+        run: yarn test --ci
