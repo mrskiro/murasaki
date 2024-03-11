@@ -1,4 +1,4 @@
-import Image from "next/image"
+import Image from "next/legacy/image"
 import { AppLink } from "@/components/app-link"
 
 export const BmcButton = () => (
@@ -6,8 +6,8 @@ export const BmcButton = () => (
     <Image
       src="/assets/bmc.png"
       alt="by me a coffee"
-      width="140px"
-      height="80px"
+      width={140}
+      height={80}
       objectFit="contain"
     />
   </AppLink>

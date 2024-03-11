@@ -1,5 +1,5 @@
 import * as React from "react"
-import * as S from "styled-components"
+import { ThemeProvider as StyledComponentProvider } from "styled-components"
 import { darkTheme, ligthTheme } from "./theme"
 
 const Context = React.createContext<{ isDark: boolean; onToggle: () => void }>({
@@ -37,9 +37,13 @@ export const ThemeProvider = (props: React.PropsWithChildren) => {
     // TODO
     // eslint-disable-next-line react/jsx-no-constructed-context-values
     <Context.Provider value={{ isDark, onToggle }}>
-      <S.ThemeProvider theme={isDark ? darkTheme : ligthTheme}>
+      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+      {/* @ts-ignore */}
+      <StyledComponentProvider theme={isDark ? darkTheme : ligthTheme}>
+        {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+        {/* @ts-ignore */}
         {props.children}
-      </S.ThemeProvider>
+      </StyledComponentProvider>
     </Context.Provider>
   )
 }

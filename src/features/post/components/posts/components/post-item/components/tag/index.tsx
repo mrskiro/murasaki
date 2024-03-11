@@ -1,4 +1,4 @@
-import Image from "next/image"
+import Image from "next/legacy/image"
 import * as S from "./styled"
 
 type Props = {
@@ -13,8 +13,8 @@ export const ExternalTag = (props: Props) => {
         <Image
           src="/assets/zenn-logo.png"
           alt="zenn"
-          width="52px"
-          height="20px"
+          width={52}
+          height={20}
           objectFit="contain"
         />
       </S.Wrap>
@@ -28,8 +28,8 @@ export const ExternalTag = (props: Props) => {
         <Image
           src="/assets/qiita-logo.png"
           alt="qiita"
-          width="52px"
-          height="20px"
+          width={52}
+          height={20}
           objectFit="contain"
         />
       </S.Wrap>
