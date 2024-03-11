@@ -40,6 +40,7 @@ export const Meta = (props: Props) => {
       <meta property="og:url" content={url} />
       <meta property="og:title" content={title} />
       <meta property="og:site_name" content="mrskiro.dev" />
+      <meta property="og:description" content="mrskiroのブログです" />
       <meta property="og:image" content={og} />
 
       <meta property="og:type" content={props.ogType} />
