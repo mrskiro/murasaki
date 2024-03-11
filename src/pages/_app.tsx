@@ -13,6 +13,8 @@ const MyApp = (props: AppProps) => {
   return (
     <>
       {isPrd() && <GoogleAnalytics />}
+      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+      {/* @ts-ignore */}
       <ResetStyle />
       <ThemeProvider>
         {/* TODO: ThemeProvider内でのerrorを感知できないのでどうするか考える */}

@@ -23,8 +23,8 @@ export const AppLink = (props: PropsWithChildren<Props>) => {
   }
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading
-    <Link {...props} passHref>
+    <Link {...props} passHref legacyBehavior>
       <S.Nav isActive={props.isActive || false}>{props.children}</S.Nav>
     </Link>
-  )
+  );
 }

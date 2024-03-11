@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import NextImage from "next/image"
+import NextImage from "next/legacy/image"
 import { generateImagePath } from "@/lib/image"
 
 type Props = {

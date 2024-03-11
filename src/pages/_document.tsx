@@ -18,6 +18,8 @@ class MyDocument extends Document {
     try {
       ctx.renderPage = () =>
         originalRenderPage({
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
           enhanceApp: (App) => (props) =>
             // eslint-disable-next-line react/jsx-props-no-spreading
             sheet.collectStyles(<App {...props} />),
@@ -25,6 +27,8 @@ class MyDocument extends Document {
       const initialProps = await Document.getInitialProps(ctx)
       return {
         ...initialProps,
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         styles: [initialProps.styles, sheet.getStyleElement()],
       }
     } finally {
