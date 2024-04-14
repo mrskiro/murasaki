@@ -4,7 +4,6 @@ import { PostDetailPage } from "@/components/pages/posts/[param]"
 import { findPostDetailBySlug, findPosts } from "@/features/post/api"
 import * as PostTypes from "@/features/post/types"
 import { toPublic } from "@/lib/image"
-import { Meta } from "@/lib/meta"
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = await findPosts()
@@ -43,6 +42,10 @@ export const getStaticProps: GetStaticProps<Props, { param: string }> = async (
   return {
     props: {
       postDetail,
+      meta: {
+        title: postDetail.title.plainText,
+        ogType: "article",
+      },
     },
   }
 }
@@ -53,12 +56,7 @@ const Page: NextPage<Props> = (props) => {
     return <p>loading...</p>
   }
 
-  return (
-    <>
-      <Meta title={props.postDetail.title.plainText} ogType="article" />
-      <PostDetailPage postDetail={props.postDetail} />
-    </>
-  )
+  return <PostDetailPage postDetail={props.postDetail} />
 }
 
 export default Page
