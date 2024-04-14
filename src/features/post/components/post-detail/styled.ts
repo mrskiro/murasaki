@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 export const Wrap = styled.article`
-  line-height: 1.8;
+  line-height: 1.9;
 `
 
 export const MetaWrap = styled.div`

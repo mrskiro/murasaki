@@ -11,4 +11,8 @@ export const ResetStyle = createGlobalStyle`
   ol, ul {
     list-style: none;
   }
+
+  body {
+    word-break: break-all;
+  }
 `

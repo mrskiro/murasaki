@@ -10,7 +10,7 @@ export const Wrap = styled.div`
   color: ${(props) => props.theme.color};
   transition: all, 0.4s;
   @media (max-width: 1024px) {
-    padding: 64px 32px 0px;
+    padding: 64px 20px 0px;
   }
 `
 

@@ -22,6 +22,6 @@ export const NumberedList = (props: Props) => {
 
 const Ol = styled.ol`
   list-style: auto;
-  list-style-position: inside;
   margin-bottom: 2px;
+  padding-left: 20px;
 `

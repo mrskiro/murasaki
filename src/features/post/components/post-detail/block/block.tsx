@@ -54,7 +54,13 @@ export const Block = (props: Props) => {
         </Paragraph>
       )
     case "bulletedListItem":
-      return <BulletedList block={props.block}>{renderChildren()}</BulletedList>
+      return (
+        <BulletedList block={props.block}>
+          {props.block.children.map((v) => (
+            <Block key={v.id} block={v} blockMap={props.blockMap} />
+          ))}
+        </BulletedList>
+      )
     case "numberedListItem": {
       const blocks = Object.values(props.blockMap)
       const groups: string[][] = [
@@ -65,7 +71,9 @@ export const Block = (props: Props) => {
       const start = (group?.findIndex((v) => v === props.block.id) ?? 0) + 1
       return (
         <NumberedList block={props.block} start={start}>
-          {renderChildren()}
+          {props.block.children.map((v) => (
+            <Block key={v.id} block={v} blockMap={props.blockMap} />
+          ))}
         </NumberedList>
       )
     }
