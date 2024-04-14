@@ -3,7 +3,6 @@ import { RootPage } from "@/components/pages/root/root"
 import { findPosts } from "@/features/post/api"
 import { Post } from "@/features/post/types/post"
 import { load } from "@/lib/config"
-import { Meta } from "@/lib/meta"
 import { parseByURL } from "@/lib/parser/rss"
 
 type Props = {
@@ -36,19 +35,14 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   return {
     props: {
       posts,
+      meta: {
+        title: "Posts",
+        ogType: "website",
+      },
     },
   }
 }
 
-const Page: NextPage<Props> = (props) => (
-  <>
-    <Meta
-      title="Posts"
-      description="むらさきの技術ブログです。"
-      ogType="website"
-    />
-    <RootPage posts={props.posts} />
-  </>
-)
+const Page: NextPage<Props> = (props) => <RootPage posts={props.posts} />
 
 export default Page

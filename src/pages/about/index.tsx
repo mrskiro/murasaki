@@ -4,7 +4,6 @@ import { AboutPage } from "@/components/pages/about"
 import { findPostDetailById } from "@/features/post/api"
 import * as PostTypes from "@/features/post/types"
 import { load } from "@/lib/config"
-import { Meta } from "@/lib/meta"
 
 type Props = {
   aboutPageDetail: PostTypes.PostDetail
@@ -16,6 +15,10 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   return {
     props: {
       aboutPageDetail,
+      meta: {
+        title: "About",
+        ogType: "article",
+      },
     },
   }
 }
@@ -26,16 +29,7 @@ const Page: NextPage<Props> = (props) => {
     return <p>loading...</p>
   }
 
-  return (
-    <>
-      <Meta
-        title="About"
-        ogType="article"
-        description="むらさきの自己紹介です。"
-      />
-      <AboutPage aboutPageDetail={props.aboutPageDetail} />
-    </>
-  )
+  return <AboutPage aboutPageDetail={props.aboutPageDetail} />
 }
 
 export default Page
