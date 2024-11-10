@@ -1,15 +1,14 @@
-import * as Types from "@/features/post/types"
-import { format } from "@/lib/date"
-import { toBlockMap } from "../../utils"
-import { Block } from "./block"
-import * as S from "./styled"
+import * as Types from "@/features/post/types";
+import { format } from "@/lib/date";
+import { toBlockMap } from "../../utils";
+import { Block } from "./block";
 
 type Props = {
-  postDetail: Types.PostDetail
-}
+  postDetail: Types.PostDetail;
+};
 
 export const PostDetail = (props: Props) => {
-  const blockMap = toBlockMap(props.postDetail.blocks)
+  const blockMap = toBlockMap(props.postDetail.blocks);
 
   return (
     // TODO: これだと再帰できないのでどうするか考える
@@ -29,25 +28,29 @@ export const PostDetail = (props: Props) => {
     //   ]
     // }, [])
 
-    <S.Wrap>
-      <S.MetaWrap>
-        <S.Title>{props.postDetail.title.plainText}</S.Title>
-        <S.MetaDetailWrap>
+    <article className="leading-7">
+      <div className="flex flex-col gap-2">
+        <h1 className="text-3xl font-bold">
+          {props.postDetail.title.plainText}
+        </h1>
+        <div className="flex justify-between items-center">
           <div />
           <div>
-            <S.DateLabel>{`${format(props.postDetail.createdAt)}`}</S.DateLabel>
+            <p className="text-right text-xs">{`${format(
+              props.postDetail.createdAt
+            )}`}</p>
             {format(props.postDetail.updatedAt) !==
               format(props.postDetail.createdAt) && (
-              <S.DateLabel>{`最終更新：${format(
+              <p className="text-right text-xs">{`最終更新：${format(
                 props.postDetail.updatedAt
-              )}`}</S.DateLabel>
+              )}`}</p>
             )}
           </div>
-        </S.MetaDetailWrap>
-      </S.MetaWrap>
+        </div>
+      </div>
       {props.postDetail.blocks.map((block) => (
         <Block key={block.id} block={block} blockMap={blockMap} />
       ))}
-    </S.Wrap>
-  )
-}
+    </article>
+  );
+};

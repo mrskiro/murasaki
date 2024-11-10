@@ -1,7 +1,6 @@
-import styled from "styled-components"
-import { useRouter } from "next/router"
-import { AppLink } from "@/components/app-link"
-import { SROnly } from "@/components/sr-only"
+import { useRouter } from "next/router";
+import { AppLink } from "@/components/app-link";
+import { SROnly } from "@/components/sr-only";
 
 const lists = [
   {
@@ -12,20 +11,21 @@ const lists = [
     name: "About",
     href: "/about",
   },
-]
+];
 
 export const Header = () => {
-  const router = useRouter()
+  const router = useRouter();
+
   return (
-    <Wrap>
-      <H1>
+    <header className="flex flex-col gap-0.5">
+      <h1 className="text-xl">
         <AppLink href="/">
           🟣
           <SROnly label="ホーム" />
         </AppLink>
-      </H1>
+      </h1>
       <nav aria-label="グローバルナビゲーション">
-        <Ul>
+        <ul className="flex flex-col gap-2">
           {lists.map((v) => (
             <li key={v.name}>
               <AppLink href={v.href} isActive={router.asPath === v.href}>
@@ -33,24 +33,8 @@ export const Header = () => {
               </AppLink>
             </li>
           ))}
-        </Ul>
+        </ul>
       </nav>
-    </Wrap>
-  )
-}
-
-const Wrap = styled.header`
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-`
-
-const H1 = styled.h1`
-  font-size: ${(props) => props.theme.fontSizes.xl};
-`
-
-const Ul = styled.ul`
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-`
+    </header>
+  );
+};

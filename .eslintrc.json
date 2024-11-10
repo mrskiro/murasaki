@@ -168,13 +168,8 @@
           "order": "asc",
           "caseInsensitive": true
         },
-        "pathGroupsExcludedImportTypes": ["next", "react", "styled-components"],
+        "pathGroupsExcludedImportTypes": ["next", "react"],
         "pathGroups": [
-          {
-            "pattern": "styled-components",
-            "group": "builtin",
-            "position": "before"
-          },
           {
             "pattern": "react",
             "group": "builtin",

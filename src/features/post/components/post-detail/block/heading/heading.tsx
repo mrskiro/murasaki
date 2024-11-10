@@ -1,49 +1,48 @@
-import * as React from "react"
-import styled, { css } from "styled-components"
-import * as Types from "@/features/post/types"
-import { RichText } from "../rich-text"
+import * as React from "react";
+import * as Types from "@/features/post/types";
+import { RichText } from "../rich-text";
 
 type Props = {
-  as: As
-  text: Types.RichText[]
-  children?: React.ReactNode
-}
+  as: As;
+  text: Types.RichText[];
+  children?: React.ReactNode;
+};
 
 export const Heading = (props: Props) => {
-  const H = elementMap[props.as]
-  if (!H) return null
-  return (
-    <H id={encodeURIComponent(props.text[0]?.plainText || "")}>
-      <RichText text={props.text} />
-      {props.children}
-    </H>
-  )
-}
+  switch (props.as) {
+    case "h1":
+      return (
+        <h1
+          className="font-bold mt-6 scroll-mt-4 mb-3 text-2xl"
+          id={encodeURIComponent(props.text[0]?.plainText || "")}
+        >
+          <RichText text={props.text} />
+          {props.children}
+        </h1>
+      );
+    case "h2":
+      return (
+        <h2
+          className="font-bold mt-6 scroll-mt-4 mb-3 text-xl"
+          id={encodeURIComponent(props.text[0]?.plainText || "")}
+        >
+          <RichText text={props.text} />
+          {props.children}
+        </h2>
+      );
+    case "h3":
+      return (
+        <h3
+          className="font-bold mt-6 scroll-mt-4 mb-3 text-lg"
+          id={encodeURIComponent(props.text[0]?.plainText || "")}
+        >
+          <RichText text={props.text} />
+          {props.children}
+        </h3>
+      );
+    default:
+      return null;
+  }
+};
 
-const base = css`
-  font-weight: bold;
-  margin-top: 24px;
-  margin-bottom: 12px;
-  scroll-margin-top: 16px;
-`
-const H1 = styled.h1`
-  ${base};
-  font-size: ${(props) => props.theme.fontSizes["2xl"]};
-`
-
-const H2 = styled.h2`
-  ${base};
-  font-size: ${(props) => props.theme.fontSizes.xl};
-`
-
-const H3 = styled.h3`
-  ${base};
-  font-size: ${(props) => props.theme.fontSizes.lg};
-`
-type As = "h1" | "h2" | "h3"
-
-const elementMap = {
-  h1: H1,
-  h2: H2,
-  h3: H3,
-}
+type As = "h1" | "h2" | "h3";
