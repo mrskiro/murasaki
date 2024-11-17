@@ -1,4 +1,4 @@
-import NextImage from "next/legacy/image";
+import NextImage from "next/image";
 import { generateImagePath } from "@/lib/image";
 
 type Props = {
@@ -6,13 +6,14 @@ type Props = {
   alt: string;
 };
 
+// https://stackoverflow.com/a/76008677
 export const Image = (props: Props) => (
-  <div className="relative *:!static *:*:!relative *:*:!w-full *:*:!h-[unset]">
-    <NextImage
-      layout="fill"
-      objectFit="contain"
-      alt={props.alt}
-      src={`${generateImagePath(props.id).replace("public", "")}`}
-    />
-  </div>
+  <NextImage
+    alt={props.alt}
+    src={`${generateImagePath(props.id).replace("public", "")}`}
+    width={0}
+    height={0}
+    sizes="100vw"
+    className="w-full h-auto"
+  />
 );
