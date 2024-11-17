@@ -13,7 +13,7 @@ export const ThreeColumn = (props: PropsWithChildren<Props>) => (
       <Switcher />
     </div>
 
-    <div className="max-w-5xl mx-auto grid md:grid-flow-row gap-6 md:grid-cols-12">
+    <div className="max-w-5xl mx-auto md:grid md:grid-flow-row gap-6 md:grid-cols-12">
       <div className="md:sticky md:top-12 md:h-fit md:col-span-2">
         <Header />
       </div>

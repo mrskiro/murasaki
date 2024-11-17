@@ -11,7 +11,7 @@ export const TwoColumn = (props: PropsWithChildren<Props>) => (
       <Switcher />
     </div>
 
-    <div className="mx-auto max-w-5xl grid md:grid-flow-row md:grid-cols-12 gap-6">
+    <div className="mx-auto max-w-5xl md:grid md:grid-flow-row md:grid-cols-12 gap-6">
       <div className="md:col-span-2 md:sticky md:top-12 md:h-fit">
         <Header />
       </div>
