@@ -1,4 +1,4 @@
-import { useId, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { useTheme } from "../../context";
 
 /**
@@ -26,7 +26,14 @@ export const Switcher = () => {
       setIsAnimated(false);
     }, 1000);
   };
+  const [isClient, setIsClient] = useState(false);
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
+  if (!isClient) {
+    return null;
+  }
   return (
     <label
       className="cursor-pointer w-20 flex flex-col items-center"

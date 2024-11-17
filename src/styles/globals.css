@@ -7,7 +7,7 @@
   --foreground: #333333;
 }
 
-body[data-theme="dark"] {
+[data-theme="dark"] {
   --background: #373a40;
   --foreground: #ced4da;
   --primary: #aa26ff;

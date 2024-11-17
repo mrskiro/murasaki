@@ -32,24 +32,22 @@ export const ThemeProvider = (props: Props) => {
   const setTheme = useCallback((theme: Exclude<Theme, "system">) => {
     setThemeState(theme);
     localStorage.setItem(STORAGE_KEY, theme);
-    document.body.dataset.theme = theme;
+    document.documentElement.dataset.theme = theme;
   }, []);
 
   useEffect(() => {
     const theme = localStorage.getItem(STORAGE_KEY) as Theme | null;
     if (theme) {
-      document.body.dataset.theme = theme;
+      document.documentElement.dataset.theme = theme;
       setThemeState(theme);
     } else {
       const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
         .matches
         ? "dark"
         : "light";
-      document.body.dataset.theme = systemTheme;
-      setThemeState(systemTheme);
-      localStorage.setItem(STORAGE_KEY, systemTheme);
+      setTheme(systemTheme);
     }
-  }, []);
+  }, [setTheme]);
 
   useEffect(() => {
     const media = window.matchMedia("(prefers-color-scheme: dark)");
@@ -58,8 +56,7 @@ export const ThemeProvider = (props: Props) => {
       const target = e.target as MediaQueryList;
       const systemTheme = target.matches ? "dark" : "light";
       if (themeState === "system") {
-        setThemeState(systemTheme);
-        localStorage.setItem(STORAGE_KEY, systemTheme);
+        setTheme(systemTheme);
       }
     };
     media.addEventListener("change", handleMediaChange);
@@ -67,7 +64,7 @@ export const ThemeProvider = (props: Props) => {
     return () => {
       media.removeEventListener("change", handleMediaChange);
     };
-  }, [themeState]);
+  }, [themeState, setTheme]);
 
   const providerValue = useMemo(
     () =>
@@ -79,8 +76,29 @@ export const ThemeProvider = (props: Props) => {
   );
 
   return (
-    <Context.Provider value={providerValue}>{props.children}</Context.Provider>
+    <Context.Provider value={providerValue}>
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `(${loadTheme.toString()})("${STORAGE_KEY}")`,
+        }}
+      />
+      {props.children}
+    </Context.Provider>
   );
+};
+
+const loadTheme = (storageKey: string) => {
+  const element = document.documentElement;
+  const theme = localStorage.getItem(storageKey);
+  if (theme) {
+    element.dataset.theme = theme;
+  } else {
+    const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
+      .matches
+      ? "dark"
+      : "light";
+    element.dataset.theme = systemTheme;
+  }
 };
 
 export const useTheme = () => {
