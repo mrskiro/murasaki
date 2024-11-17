@@ -1,35 +1,36 @@
-import { GoLinkExternal } from "react-icons/go"
-import { AppLink } from "@/components/app-link"
-import { Post } from "@/features/post/types"
-import { format } from "@/lib/date"
-import { ExternalTag } from "./components/tag"
-import * as S from "./styled"
+import { GoLinkExternal } from "react-icons/go";
+import { AppLink } from "@/components/app-link";
+import { Post } from "@/features/post/types";
+import { format } from "@/lib/date";
+import { ExternalTag } from "./components/tag";
 
 type Props = {
-  type: Post["type"]
-  title: string
-  link: string
-  createdAt: string
-}
+  type: Post["type"];
+  title: string;
+  link: string;
+  createdAt: string;
+};
 
 export const PostItem = (props: Props) => (
-  <S.Wrap>
+  <div className="flex flex-col gap-0.5">
     <div>
-      <S.DateLabel>{format(props.createdAt)}</S.DateLabel>
+      <time className="text-xs">{format(props.createdAt)}</time>
     </div>
     {props.type === "internal" ? (
       <AppLink href={`${props.link}`}>
-        <S.Title>{`# ${props.title}`}</S.Title>
+        <span className="text-sm text-center hover:underline">{`# ${props.title}`}</span>
       </AppLink>
     ) : (
       <AppLink href={`${props.link}`} isExternal>
-        {/* 色変える */}
-        <S.Title>
-          {`# ${props.title}`}
-          <GoLinkExternal size="12px" />
-        </S.Title>
-        {props.type === "external" && <ExternalTag link={props.link} />}
+        <div className="flex flex-col gap-1">
+          {/* 色変える */}
+          <span className="flex items-center gap-0.5 hover:underline text-sm">
+            {`# ${props.title}`}
+            <GoLinkExternal size="12px" />
+          </span>
+          {props.type === "external" && <ExternalTag link={props.link} />}
+        </div>
       </AppLink>
     )}
-  </S.Wrap>
-)
+  </div>
+);

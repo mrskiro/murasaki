@@ -1,17 +1,14 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires, @typescript-eslint/no-require-imports
-const { withSentryConfig } = require("@sentry/nextjs")
+const { withSentryConfig } = require("@sentry/nextjs");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  compiler: {
-    styledComponents: true,
-  },
   webpack: (config) => {
-    config.resolve.fallback = { fs: false }
-    return config
+    config.resolve.fallback = { fs: false };
+    return config;
   },
-}
+};
 
 module.exports = withSentryConfig(
   nextConfig,
@@ -44,4 +41,4 @@ module.exports = withSentryConfig(
     // Automatically tree-shake Sentry logger statements to reduce bundle size
     disableLogger: true,
   }
-)
+);

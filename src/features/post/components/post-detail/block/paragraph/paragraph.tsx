@@ -1,23 +1,18 @@
-import * as React from "react"
-import styled from "styled-components"
-import * as Types from "@/features/post/types"
-import { RichText } from "../rich-text"
+import * as React from "react";
+import * as Types from "@/features/post/types";
+import { RichText } from "../rich-text";
 
 type Props = {
-  block: Types.ParagraphBlock
-  blockMap: Types.BlockMap
-  children?: React.ReactNode
-}
+  block: Types.ParagraphBlock;
+  blockMap: Types.BlockMap;
+  children?: React.ReactNode;
+};
 
 export const Paragraph = (props: Props) => {
   return (
-    <P>
+    <p className="mb-5">
       <RichText text={props.block.richText} />
       {props.children}
-    </P>
-  )
-}
-
-const P = styled.p`
-  margin-bottom: 20px;
-`
+    </p>
+  );
+};

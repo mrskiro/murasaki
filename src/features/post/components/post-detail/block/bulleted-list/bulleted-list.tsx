@@ -1,26 +1,19 @@
-import React from "react"
-import styled from "styled-components"
-import { BulletedListItemBlock } from "@/features/post/types"
-import { RichText } from "../rich-text"
+import React from "react";
+import { BulletedListItemBlock } from "@/features/post/types";
+import { RichText } from "../rich-text";
 
 type Props = {
-  block: BulletedListItemBlock
-  children?: React.ReactNode
-}
+  block: BulletedListItemBlock;
+  children?: React.ReactNode;
+};
 
 export const BulletedList = (props: Props) => {
   return (
-    <Ul>
+    <ul className="list-disc mb-0.5 pl-5">
       <li>
         <RichText text={props.block.richText} />
         {props.children}
       </li>
-    </Ul>
-  )
-}
-
-const Ul = styled.ul`
-  list-style: inherit;
-  margin-bottom: 2px;
-  padding-left: 20px;
-`
+    </ul>
+  );
+};

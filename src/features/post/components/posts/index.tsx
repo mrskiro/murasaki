@@ -1,13 +1,12 @@
-import { Post } from "../../types"
-import { PostItem } from "./components/post-item"
-import * as S from "./styled"
+import { Post } from "../../types";
+import { PostItem } from "./components/post-item";
 
 type Props = {
-  posts: Post[]
-}
+  posts: Post[];
+};
 
 export const Posts = (props: Props) => (
-  <S.Ul>
+  <ul className="flex flex-col gap-4">
     {props.posts.map((v) => (
       <li key={v.id}>
         <PostItem
@@ -18,5 +17,5 @@ export const Posts = (props: Props) => (
         />
       </li>
     ))}
-  </S.Ul>
-)
+  </ul>
+);

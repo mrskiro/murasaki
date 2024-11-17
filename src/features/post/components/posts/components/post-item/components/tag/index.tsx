@@ -1,15 +1,14 @@
-import Image from "next/legacy/image"
-import * as S from "./styled"
+import Image from "next/legacy/image";
 
 type Props = {
-  link: string
-}
+  link: string;
+};
 
 export const ExternalTag = (props: Props) => {
-  const isZenn = props.link.includes("zenn")
+  const isZenn = props.link.includes("zenn");
   if (isZenn) {
     return (
-      <S.Wrap>
+      <div>
         <Image
           src="/assets/zenn-logo.png"
           alt="zenn"
@@ -17,14 +16,14 @@ export const ExternalTag = (props: Props) => {
           height={20}
           objectFit="contain"
         />
-      </S.Wrap>
-    )
+      </div>
+    );
   }
 
-  const isQiita = props.link.includes("qiita")
+  const isQiita = props.link.includes("qiita");
   if (isQiita) {
     return (
-      <S.Wrap>
+      <div>
         <Image
           src="/assets/qiita-logo.png"
           alt="qiita"
@@ -32,9 +31,9 @@ export const ExternalTag = (props: Props) => {
           height={20}
           objectFit="contain"
         />
-      </S.Wrap>
-    )
+      </div>
+    );
   }
 
-  return null
-}
+  return null;
+};

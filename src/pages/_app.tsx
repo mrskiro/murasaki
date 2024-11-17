@@ -1,28 +1,28 @@
-import * as React from "react"
-import Head from "next/head"
-import { useRouter } from "next/router"
-import { ErrorBoundary } from "@/components/error-boundary"
-import { ThemeProvider } from "@/features/theme/context"
-import { TwoColumn } from "@/layouts/two-column"
-import { isPrd } from "@/lib/environment"
-import { GoogleAnalytics, usePegeView } from "@/lib/log"
-import { ResetStyle } from "@/lib/style/reset-style"
-import type { AppProps } from "next/app"
+import * as React from "react";
+import Head from "next/head";
+import { useRouter } from "next/router";
+import { ErrorBoundary } from "@/components/error-boundary";
+import { ThemeProvider } from "@/features/theme/context";
+import { TwoColumn } from "@/layouts/two-column";
+import { isPrd } from "@/lib/environment";
+import { GoogleAnalytics, usePegeView } from "@/lib/log";
+import type { AppProps } from "next/app";
+import "../styles/globals.css";
 
 const MyApp = (
   props: AppProps<{
     meta?: {
-      title?: string
-      ogType?: "website" | "article"
-    }
+      title?: string;
+      ogType?: "website" | "article";
+    };
   }>
 ) => {
-  usePegeView()
+  usePegeView();
 
-  const { meta } = props.pageProps
+  const { meta } = props.pageProps;
 
-  const router = useRouter()
-  const url = `https://mrskiro.dev${router.asPath}`
+  const router = useRouter();
+  const url = `https://mrskiro.dev${router.asPath}`;
   return (
     <>
       <Head>
@@ -47,9 +47,6 @@ const MyApp = (
         <meta property="og:url" content={url} />
       </Head>
       {isPrd() && <GoogleAnalytics />}
-      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-      {/* @ts-ignore */}
-      <ResetStyle />
       <ThemeProvider>
         {/* TODO: ThemeProvider内でのerrorを感知できないのでどうするか考える */}
         <ErrorBoundary
@@ -61,7 +58,7 @@ const MyApp = (
         </ErrorBoundary>
       </ThemeProvider>
     </>
-  )
-}
+  );
+};
 
-export default MyApp
+export default MyApp;
