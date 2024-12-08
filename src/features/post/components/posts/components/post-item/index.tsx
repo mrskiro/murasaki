@@ -2,7 +2,6 @@ import { GoLinkExternal } from "react-icons/go";
 import { AppLink } from "@/components/app-link";
 import { Post } from "@/features/post/types";
 import { format } from "@/lib/date";
-import { ExternalTag } from "./components/tag";
 
 type Props = {
   type: Post["type"];
@@ -22,14 +21,11 @@ export const PostItem = (props: Props) => (
       </AppLink>
     ) : (
       <AppLink href={`${props.link}`} isExternal>
-        <div className="flex flex-col gap-1">
-          {/* 色変える */}
-          <span className="flex items-center gap-0.5 hover:underline text-sm">
-            {`# ${props.title}`}
-            <GoLinkExternal size="12px" />
-          </span>
-          {props.type === "external" && <ExternalTag link={props.link} />}
-        </div>
+        {/* 色変える */}
+        <span className="flex items-center gap-0.5 hover:underline text-sm">
+          {`# ${props.title}`}
+          <GoLinkExternal size="12px" />
+        </span>
       </AppLink>
     )}
   </div>
