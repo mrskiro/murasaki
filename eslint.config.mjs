@@ -11,6 +11,7 @@ import pluginStorybook from "eslint-plugin-storybook";
 /** @type {import("eslint").Linter.Config[]} */
 export default [
   { ignores: ["*.config.{js,ts}"] },
+  // eslint
   {
     rules: {
       ...eslint.configs.recommended.rules,
@@ -80,9 +81,15 @@ export default [
       yoda: "error",
     },
   },
-  ...tseslint.configs.recommended,
+  // typescript-eslint
   {
+    name: tseslint.configs.base.name,
+    languageOptions: tseslint.configs.base.languageOptions,
+    plugins: tseslint.configs.base.plugins,
     rules: {
+      ...tseslint.configs.eslintRecommended.rules,
+      // https://github.com/typescript-eslint/typescript-eslint/blob/cb0ef9ceb73057bc90fa54229e2d4828432530b5/packages/eslint-plugin/src/configs/recommended.ts
+      ...tseslint.configs.recommended.at(-1).rules,
       "@typescript-eslint/no-unused-vars": [
         "warn",
         {
