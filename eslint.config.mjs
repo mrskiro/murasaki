@@ -239,6 +239,7 @@ export default [
     plugins: pluginImport.flatConfigs.recommended.plugins,
     rules: {
       ...pluginImport.flatConfigs.recommended.rules,
+      // https://github.com/vercel/next.js/blob/f348241e25767e1e08909de19cdab032d63e369b/packages/eslint-config-next/index.js#L63
       "import/no-anonymous-default-export": "warn",
       "import/order": [
         "error",
