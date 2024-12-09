@@ -10,7 +10,7 @@ import pluginStorybook from "eslint-plugin-storybook";
 
 /** @type {import("eslint").Linter.Config[]} */
 export default [
-  { ignores: ["*.config.{js,ts}"] },
+  { ignores: ["*.config.{js,ts}", "*.next/**"] },
   // eslint
   {
     rules: {
