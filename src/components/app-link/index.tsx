@@ -16,7 +16,7 @@ export const AppLink = (props: PropsWithChildren<Props>) => {
     const { children, ...anchorProps } = props;
     return (
       <a
-        className="cursor-pointer underline break-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
+        className="cursor-pointer break-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
         target="_blank"
         {...anchorProps}
       >
@@ -25,15 +25,13 @@ export const AppLink = (props: PropsWithChildren<Props>) => {
     );
   }
   return (
-    // eslint-disable-next-line react/jsx-props-no-spreading
-    <Link {...props} passHref legacyBehavior>
-      {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-      <a
-        data-active={props.isActive ?? false}
-        className="cursor-pointer underline-offset-4 data-[active=true]:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
-      >
-        {props.children}
-      </a>
+    <Link
+      // eslint-disable-next-line react/jsx-props-no-spreading
+      {...props}
+      data-active={props.isActive ?? false}
+      className="cursor-pointer underline-offset-4 data-[active=true]:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
+    >
+      {props.children}
     </Link>
   );
 };
