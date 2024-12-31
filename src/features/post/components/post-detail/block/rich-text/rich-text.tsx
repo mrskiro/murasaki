@@ -1,5 +1,4 @@
 import * as React from "react";
-import { AppLink } from "@/components/app-link";
 import * as Types from "@/features/post/types";
 import { cn } from "@/lib/style/cn";
 
@@ -39,9 +38,13 @@ const wrapText = (text: Types.RichText) => {
   );
   if (text.href) {
     element = (
-      <AppLink isExternal href={text.href}>
+      <a
+        href={text.href}
+        target="_blank"
+        className="cursor-pointer underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
+      >
         {element}
-      </AppLink>
+      </a>
     );
   }
   return element;
